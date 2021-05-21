@@ -1,0 +1,88 @@
+
+.menu{
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.menu button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.menu button:hover{
+    background-color: #ddd;
+}
+
+.menu button.active {
+    background-color: #ccc;
+}
+
+.choices-content {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top:none ;
+}
+
+/********************************* sidebar *********************************/
+
+.dashboard {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 30px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+.dashboard a {
+    padding: 4px 4px 4px 32px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.dashboard .closebtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+#main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+    .dashboard {padding-top: 15px;}
+    .dashboard a {font-size: 10px;}
+}
+
+/* add */
+.dashboard a button{
+    color: wheat;
+    background-color: #46786c;
+    border: none;
+    border-radius: 40px;
+    position: absolute;
+    bottom: 5%;
+    right: 10px;
+    margin-left: 20px;
+}
+.dashboard a button:hover{
+    background-color: #24c19a;
+}
+/********************************* fin sidebar *********************************/
