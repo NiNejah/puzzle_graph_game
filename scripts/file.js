@@ -57,6 +57,12 @@ function on_select(){
     return true ;
 }
 
+function selectAll(){
+    let imgs = document.querySelectorAll(".column img");
+    for (let i = 0 ; i < imgs.length;i++) {
+        imgs[i].className = "selectedImg"
+    }
+}
 
 function displayImgs(){
     var c = document.getElementById("myCanvas");

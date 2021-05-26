@@ -33,47 +33,85 @@
 
 .dashboard {
     height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
+    width: 250px; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
     background-color: #111; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 30px; /* Place content 60px from the top */
+    padding-top: 10px; /* Place content 20px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
 
-.dashboard a {
-    padding: 4px 4px 4px 32px;
-    text-decoration: none;
-    font-size: 14px;
+/* *** tooles *** */
+
+/*.dashboard a {*/
+/*    padding: 4px 4px 4px 32px;*/
+/*    text-decoration: none;*/
+/*    font-size: 14px;*/
+/*    color: #818181;*/
+/*    display: block;*/
+/*    transition: 0.3s;*/
+/*}*/
+
+.board-tools{
+    overflow: hidden;
+    position: fixed;
+    /*display: none;*/
+    width: 200px;
+    background-color: rgba(59, 56, 56, 0.73);
+    padding: 5px;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.7s;
     color: #818181;
-    display: block;
-    transition: 0.3s;
 }
-
-.dashboard .closebtn {
-    position: absolute;
-    top: 0;
-    right: 10px;
+.dashboard a{
     font-size: 20px;
-    margin-left: 20px;
+    margin-left: 30px;
+    color: #dddddd;
+}
+/*.dashboard .addbtn {*/
+/*    color: #46786c;*/
+/*}*/
+/*.dashboard .selectAllbtn{*/
+/*    color: #806d12;*/
+/*}*/
+/*.dashboard .closebtn {*/
+/*    color: #a50069;*/
+/*}*/
+
+.dashboard .addbtn:hover{
+  color: #24c19a;
+}
+.dashboard .selectAllbtn:hover{
+    color: #e2bc29;
+}
+.dashboard .closebtn:hover{
+    color: #ff003b;
 }
 
-/* add */
-.dashboard a button{
-    color: wheat;
-    background-color: #46786c;
-    border: none;
-    border-radius: 40px;
-    position: absolute;
-    bottom: 5%;
-    right: 10px;
-    margin-left: 20px;
+ /* IMG */
+.img-row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2px;
+    padding-top: 50px;
+
 }
-.dashboard a button:hover{
-    background-color: #24c19a;
+.img-row .column {
+    flex: 20%;
+    padding: 2px;
+}
+.img-row .column .myImg {
+    width: 95%;
+    border: 2px solid #cccccc;
+}
+
+.img-row .column .selectedImg {
+    width: 95%;
+    border: 2px solid #ff0000;
 }
 
 #main {
@@ -86,3 +124,10 @@
     .dashboard a {font-size: 10px;}
 }
 /********************************* fin sidebar *********************************/
+
+
+canvas {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #818181;
+}

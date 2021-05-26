@@ -14,9 +14,38 @@
             <!-- image : -->
             <div id="mySidebar" class="dashboard">
 <!--                TODO : css of this  -->
-                <div class="board-tools">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a><button class="add" onclick="">add</button></a>
+                <div class="board-tools" id ="btools">
+                    <a class="addbtn" onclick="displayImgs()" ><i class="fas fa-plus-circle"></i></a>
+                    <a class="selectAllbtn" onclick="selectAll()"><i class="fas fa-border-all"></i></a>
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="fas fa-times-circle"></i></a>
+                </div>
+
+                <div class="img-row" onclick="on_select()">
+                    <div class="column">
+                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg" alt="my img">
+                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">
+                        <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">
+                        <img src="img_test1/23iwmde%20(1).jpg" class="myImg">
+                        <img src="img_test1/Lammasu.jpg" class="myImg">
+                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">
+                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">
+                        <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="selectedImg">
+                        <img src="img_test1/23iwmde%20(1).jpg" class="myImg">
+                        <img src="img_test1/Lammasu.jpg" class="myImg">
+                    </div>
+                    <div class="column">
+                        <img src="img_test1/CarteIrak10.jpg" class="myImg">
+                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">
+                        <img src="img_test1/3294289.jpg" class="myImg">
+                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">
+                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">
+                        <img src="img_test1/CarteIrak10.jpg" class="myImg">
+                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">
+                        <img src="img_test1/3294289.jpg" class="myImg">
+                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">
+                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">
+
+                    </div>
                 </div>
 
             </div>
@@ -27,7 +56,6 @@
                     <label for="files">
                         <input type="file" name="files" id="myfiles" style="display:none" webkitdirectory="" directory="">
                         <button id="filebtn" onclick="document.getElementById('myfiles').click()"><i class="fas fa-download fa-2X"></i> open new file </button>
-<!--                        <input type="button" id="filebtn" onclick="document.getElementById('myfiles').click()">-->
                     </label>
                     </div>
                     <button class="choices" onclick="openNav()"><i class="fas fa-check" ></i> Selectid</button>
@@ -36,10 +64,9 @@
 
                 <div class="content">
                     <div id="Workshop" class="choices-content">
-                        <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
-                            Your browser does not support the HTML canvas tag.
+                        <canvas id="myCanvas" style="border:1px solid #000000;">
                         </canvas>
-                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>
+<!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
                     </div>
 
                 </div>
