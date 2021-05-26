@@ -59,9 +59,9 @@ function on_select(){
 
 function selectAll(){
     let imgs = document.querySelectorAll(".column img");
-    for (let i = 0 ; i < imgs.length;i++) {
-        imgs[i].className = "selectedImg"
-    }
+    imgs.forEach(element => {
+        element.className = "selectedImg";
+    });
 }
 
 function displayImgs(){
