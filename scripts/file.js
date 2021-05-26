@@ -63,7 +63,12 @@ function selectAll(){
         element.className = "selectedImg";
     });
 }
-
+function deselectAll(){
+    let imgs = document.querySelectorAll(".column img");
+    imgs.forEach(element => {
+        element.className = "myImg";
+    });
+}
 function displayImgs(){
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext('2d');

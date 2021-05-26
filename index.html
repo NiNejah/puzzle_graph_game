@@ -16,8 +16,9 @@
 <!--                TODO : css of this  -->
                 <div class="board-tools" id ="btools">
                     <a class="addbtn" onclick="displayImgs()" title ="add to the workshop"><i class="fas fa-plus-circle"></i></a>
-                    <a class="selectAllbtn" onclick="selectAll()" title ="slect all"><i class="fas fa-border-all"></i></a>
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" title ="close"><i class="fas fa-times-circle"></i></a>
+                    <a class="selectAllbtn" onclick="selectAll()" title ="select all"><i class="fas fa-border-all"></i></a>
+                    <a class="deselectAllbtn" onclick="deselectAll()" title ="deselect all"><i class="fas fa-object-group"></i></a>
+                    <a class="closebtn" href="javascript:void(0)"  onclick="closeNav()" title ="close"><i class="fas fa-times-circle"></i></a>
                 </div>
 
                 <div class="img-row" onclick="on_select()">
@@ -59,7 +60,7 @@
                         <button id="filebtn" onclick="document.getElementById('myfiles').click()"><i class="fas fa-download fa-2X"></i> open new file </button>
                     </label>
                     </div>
-                    <button class="choices" onclick="openNav()"><i class="fas fa-check" ></i> Selectid</button>
+                    <button class="choices" onclick="openNav()"><i class="fas fa-check" ></i> Selected</button>
                     <button class="choices" onclick ="openChoice(event,'Workshop')"> <i class="fas fa-pencil-ruler"></i> Workshop</button>
                 </div>
 
