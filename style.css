@@ -14,7 +14,6 @@
     padding: 14px 16px;
     transition: 0.3s;
 }
-
 .menu button:hover{
     background-color: #ddd;
 }
@@ -44,6 +43,7 @@
     padding-top: 30px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
+
 .dashboard a {
     padding: 4px 4px 4px 32px;
     text-decoration: none;
@@ -61,16 +61,6 @@
     margin-left: 20px;
 }
 
-#main {
-    transition: margin-left .5s; /* If you want a transition effect */
-    padding: 20px;
-}
-
-@media screen and (max-height: 450px) {
-    .dashboard {padding-top: 15px;}
-    .dashboard a {font-size: 10px;}
-}
-
 /* add */
 .dashboard a button{
     color: wheat;
@@ -84,5 +74,15 @@
 }
 .dashboard a button:hover{
     background-color: #24c19a;
+}
+
+#main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+    .dashboard {padding-top: 15px;}
+    .dashboard a {font-size: 10px;}
 }
 /********************************* fin sidebar *********************************/

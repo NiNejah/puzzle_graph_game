@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
     <script src="scripts/menu.js" ></script>
     <title>img</title>
@@ -12,29 +13,28 @@
         <div class="all">
             <!-- image : -->
             <div id="mySidebar" class="dashboard">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="#">imag1</a>
-                <a href="#">imag2</a>
-                <a href="#">iamg3</a>
-                <a href="#">imag4</a>
-                <a><button class="add" onclick="">add</button></a>
+<!--                TODO : css of this  -->
+                <div class="board-tools">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a><button class="add" onclick="">add</button></a>
+                </div>
+
             </div>
 
             <div id="main" class="menu-body">
                 <div class="menu">
-                    <button class="choices" onclick ="openChoice(event,'Open')"> ▼ Open a new file</button>
-                    <!-- <button class="choices" onclick ="openChoice(event,'truc')">Selction</button>-->
-                    <button class="choices" onclick="openNav()">&#9776; Selectid</button>
-                    <button class="choices" onclick ="openChoice(event,'Workshop')"> ✎ Workshop</button>
+                    <div class="choices" id="ch-download" >
+                    <label for="files">
+                        <input type="file" name="files" id="myfiles" style="display:none" webkitdirectory="" directory="">
+                        <button id="filebtn" onclick="document.getElementById('myfiles').click()"><i class="fas fa-download fa-2X"></i> open new file </button>
+<!--                        <input type="button" id="filebtn" onclick="document.getElementById('myfiles').click()">-->
+                    </label>
+                    </div>
+                    <button class="choices" onclick="openNav()"><i class="fas fa-check" ></i> Selectid</button>
+                    <button class="choices" onclick ="openChoice(event,'Workshop')"> <i class="fas fa-pencil-ruler"></i> Workshop</button>
                 </div>
 
                 <div class="content">
-                    <div id="Open" class="choices-content">
-                        <p> please click on "Open a new file" to add a new image file </p>
-                        <input type="file" id="file_input" webkitdirectory="" directory="">
-                        <a href="https://www.youtube.com/watch?v=YuFxE3CUTtw" target="_blank">info1 to add img </a>
-                    </div>
-
                     <div id="Workshop" class="choices-content">
                         <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
                             Your browser does not support the HTML canvas tag.
@@ -48,5 +48,6 @@
 
         </div>
     </main>
+    <script src="scripts/file.js" ></script>
 </body>
 </html>
