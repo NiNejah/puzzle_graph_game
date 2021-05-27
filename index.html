@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
     <script src="scripts/menu.js" ></script>
+    <script src="./cy_package/cytoscape.min.js"></script>
     <title>img</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
         <div class="all">
             <!-- image : -->
             <div id="mySidebar" class="dashboard">
-<!--                TODO : css of this  -->
+
                 <div class="board-tools" id ="btools">
                     <a class="addbtn" onclick="displayImgs()" title ="add to the workshop"><i class="fas fa-plus-circle"></i></a>
                     <a class="selectAllbtn" onclick="selectAll()" title ="select all"><i class="fas fa-border-all"></i></a>
@@ -66,8 +67,10 @@
 
                 <div class="content">
                     <div id="Workshop" class="choices-content">
-                        <canvas id="myCanvas" style="border:1px solid #000000;">
-                        </canvas>
+                        <div id="cy"></div>
+<!--                        <canvas id="myCanvas" style="border:1px solid #000000;">-->
+<!--                            -->
+<!--                        </canvas>-->
 <!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
                     </div>
 
@@ -78,5 +81,6 @@
         </div>
     </main>
     <script src="scripts/file.js" ></script>
+    <script src="scripts/graph.js"></script>
 </body>
 </html>

@@ -27,6 +27,7 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("cy").style.marginLeft = "0";
     let board_tools = document.getElementById("btools");
     board_tools.style.display = "none";
 }

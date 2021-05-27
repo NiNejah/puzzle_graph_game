@@ -81,7 +81,7 @@ function displayImgs(){
         img = slectedImgs[i];
         let myImg = new Image();
         myImg.src = img.attributes[0].value;
-        ctx.drawImage(myImg, x, y , 50,50);
+        ctx.drawImage(myImg, x, y ,50,50);
         x += 50;
         if ( x >= c.width ){
             x = 0 ;
