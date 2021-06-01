@@ -9,7 +9,7 @@ let cy = cytoscape({
 
     layout: {
         name: 'grid',
-        rows: 100
+        rows: 3
     },
 
     style: cytoscape.stylesheet()
@@ -67,25 +67,32 @@ function addImag() {
     // to renduring juste the new elemants :
     let collection = cy.collection();
     for (let i = 0; i < slectedImgs.length; i++) {
+        console.log("src : ",slectedImgs[i]);
         let e = last_node_nb + 1;
-        console.log("e: ", '#' + e);
-        let ele = cy.add({
-            group: 'nodes',
-            data: {id: e},
-            position: {x: 300, y: 200}
-        });
-        cy.style()
-            .selector('#' + String(e))
-            .style({
-                'background-image': 'url(' + slectedImgs[i].src + ')'
-            })
-            .update()
-        ;
-        collection = collection.union(ele);
-        console.log ("ele : ",ele);
-        last_node_nb++;
+        let imgUrl = 'url(' + slectedImgs[i].src + ')';
+        if (alreadyIn(imgUrl)) {
+            alertMessage(slectedImgs[i].src);
+        } else {
+            let ele = cy.add({
+                group: 'nodes',
+                data: {id: e},
+                position: {x: 300, y: 200}
+            });
+            cy.style()
+                .selector('#' + String(e))
+                .style({
+                    'background-image': imgUrl
+                })
+                .update()
+            ;
+            collection = collection.union(ele);
+            last_node_nb++;
+        }
+        layoutRun(collection);
     }
-    layoutRun(collection);
+
+    // let mye = cy.getElementById('1');
+    // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
 
 
@@ -96,8 +103,25 @@ function layoutRun(eles) {
     });
     layout.run();
 }
-//
-// function alertMesage(src){
-//
-// }
+
+function alertMessage(src) {
+    alert(src + "\nalready in the workshop");
+}
+
+
+function alreadyIn(url) {
+    let isItIn = false ;
+    cy.nodes().forEach((e)=>{
+        if (e._private.style["background-image"].strValue == url) {
+            console.log("alreadyIn : e = ", e._private.style["background-image"].strValue,
+                "et url =", url);
+            isItIn = true;
+            cy.zoom({
+                level: 1.5,
+                position: e.position()
+            });
+        }
+    });
+    return isItIn ;
+}
 
