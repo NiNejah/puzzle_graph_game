@@ -9,7 +9,7 @@ let cy = cytoscape({
 
     layout: {
         name: 'grid',
-        rows: 4
+        rows: 100
     },
 
     style: cytoscape.stylesheet()
@@ -18,7 +18,8 @@ let cy = cytoscape({
             'height': 80,
             'width': 80,
             'background-fit': 'cover',
-            'lable':'data(id)',
+            'label': 'data(id)',
+            'shape': 'round-rectangle', //'barrel',
             'border-color': '#8ce8ff',
             'border-width': 3,
             'border-opacity': 0.5
@@ -59,26 +60,44 @@ let cy = cytoscape({
 //     // collection = collection.union(clickedNode);
 //     // console.log("collection : ",collection);
 // });
-let nb_img = 0 ;
+
 function addImag() {
     var slectedImgs = document.getElementsByClassName("selectedImg");
-    let css_vars;
-    const getVar = (variable) => (css_vars ? css_vars.getVar(variable) : null)
-    for (let i = nb_img; i < nb_img+slectedImgs.length; i++) {
-        // console.log("src e : ", slectedImgs[i].src);
-        let e = i + 1;
-        cy.add({
+    let last_node_nb = cy.nodes().length;
+    // to renduring juste the new elemants :
+    let collection = cy.collection();
+    for (let i = 0; i < slectedImgs.length; i++) {
+        let e = last_node_nb + 1;
+        console.log("e: ", '#' + e);
+        let ele = cy.add({
             group: 'nodes',
             data: {id: e},
-            position: {x: 200, y: 200}
+            position: {x: 300, y: 200}
         });
         cy.style()
-            .selector('#'+toString(e))
+            .selector('#' + String(e))
             .style({
-                'background-image': 'url('+slectedImgs[i].src+')'
+                'background-image': 'url(' + slectedImgs[i].src + ')'
             })
             .update()
         ;
-        console.log("les nodes : " ,cy.data.id);
+        collection = collection.union(ele);
+        console.log ("ele : ",ele);
+        last_node_nb++;
     }
+    layoutRun(collection);
 }
+
+
+function layoutRun(eles) {
+    let layout = eles.layout({
+        name: 'random',
+        animate: true,
+    });
+    layout.run();
+}
+//
+// function alertMesage(src){
+//
+// }
+
