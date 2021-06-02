@@ -4,12 +4,13 @@ let cy = cytoscape({
     // elements: [
     //     {data: {id: 'a'}},
     //     {data: {id: 'b'}},
-    //     {data: {id: 'ab', source: 'a', target: 'b'}}
+    //     {data: {id: 'c'}},
+    //     // {data: {id: 'ab', source: 'a', target: 'b'}}
     // ],
 
     layout: {
         name: 'grid',
-        rows: 3
+        rows: 4
     },
 
     style: cytoscape.stylesheet()
@@ -35,31 +36,14 @@ let cy = cytoscape({
 
 });
 
-// let eles = cy.add([
-//     {
-//         group: 'nodes',
-//         data: {id: 'c'},
-//         position: {x: 700, y: 200}
-//     },
-//     {
-//         group: 'edges',
-//         data: {id: 'bc', source: 'b', target: 'c'}
-//     },
-//     {
-//         group: 'edges',
-//         data: {id: 'cb', source: 'c', target: 'b'}
-//     }
-// ]);
 
-// test :
-// let collection = cy.collection();
-// cy.nodes().on('click', function(e){
-//     let clickedNode = e.target;
-//     console.log("clickedNode : ",clickedNode);
-//     cy.remove(clickedNode);
-//     // collection = collection.union(clickedNode);
-//     // console.log("collection : ",collection);
-// });
+function layoutRun(eles) {
+    let layout = eles.layout({
+        name: 'random',
+        animate: true,
+    });
+    layout.run();
+}
 
 function addImag() {
     var slectedImgs = document.getElementsByClassName("selectedImg");
@@ -67,7 +51,7 @@ function addImag() {
     // to renduring juste the new elemants :
     let collection = cy.collection();
     for (let i = 0; i < slectedImgs.length; i++) {
-        console.log("src : ",slectedImgs[i]);
+        console.log("src : ", slectedImgs[i]);
         let e = last_node_nb + 1;
         let imgUrl = 'url(' + slectedImgs[i].src + ')';
         if (alreadyIn(imgUrl)) {
@@ -95,26 +79,45 @@ function addImag() {
     // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
 
+let collectionToBeLinked = cy.collection();
 
-function layoutRun(eles) {
-    let layout = eles.layout({
-        name: 'random',
-        animate: true,
-    });
-    layout.run();
-}
+cy.nodes().on('click', (e) => {
+    console.log("E hase clicked !", e.target);
+    collectionToBeLinked = collectionToBeLinked.union(e.target);
+    console.log("alll to be link ", collectionToBeLinked," length ",collectionToBeLinked.length);
+    if (collectionToBeLinked.length == 2 ) {
+        let from = collectionToBeLinked[0]._private.data.id;
+        let to = collectionToBeLinked[1]._private.data.id;
+        if (!alreadyLinked(from+to)) {
+            let edg = cy.add({
+                group: 'edges',
+                data: {id: from+to, source: from, target:to}
+            });
+            console.log("my edges " ,edg[0]); // debug print
+            console.log("my edges id " ,edg[0]._private.data.id);
+        }
+        collectionToBeLinked = cy.collection();
+    }
+
+});
+
+// cy.removeListener('click', makeALinke);
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////// Verification Functions  ////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 function alertMessage(src) {
     alert(src + "\nalready in the workshop");
 }
 
-
 function alreadyIn(url) {
-    let isItIn = false ;
-    cy.nodes().forEach((e)=>{
+    let isItIn = false;
+    cy.nodes().forEach((e) => {
         if (e._private.style["background-image"].strValue == url) {
-            console.log("alreadyIn : e = ", e._private.style["background-image"].strValue,
-                "et url =", url);
+            // console.log("alreadyIn : e = ", e._private.style["background-image"].strValue,"et url =", url);
             isItIn = true;
             cy.zoom({
                 level: 1.5,
@@ -122,6 +125,16 @@ function alreadyIn(url) {
             });
         }
     });
-    return isItIn ;
+    return isItIn;
 }
 
+function alreadyLinked(edgId){
+    let isItIn = false ;
+    cy.edges().forEach((e) => {
+        if (e[0]._private.data.id == edgId){
+            console.log("edg alreadyLinked");
+            isItIn = true ;
+        }
+    });
+    return isItIn ;
+}
