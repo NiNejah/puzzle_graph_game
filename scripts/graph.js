@@ -43,6 +43,7 @@ function layoutRun(eles) {
         animate: true,
     });
     layout.run();
+    cy.centre();
 }
 
 function addImag() {
@@ -79,30 +80,29 @@ function addImag() {
     // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
 
+cy.update
 let collectionToBeLinked = cy.collection();
-
-cy.nodes().on('click', (e) => {
+console.log("tout va bien ");
+cy.on('click', 'node' ,(e) => {
     console.log("E hase clicked !", e.target);
     collectionToBeLinked = collectionToBeLinked.union(e.target);
-    console.log("alll to be link ", collectionToBeLinked," length ",collectionToBeLinked.length);
-    if (collectionToBeLinked.length == 2 ) {
+    console.log("alll to be link ", collectionToBeLinked, " length ", collectionToBeLinked.length);
+    if (collectionToBeLinked.length == 2) {
         let from = collectionToBeLinked[0]._private.data.id;
         let to = collectionToBeLinked[1]._private.data.id;
-        if (!alreadyLinked(from+to)) {
+        if (!alreadyLinked(from + to)) {
             let edg = cy.add({
                 group: 'edges',
-                data: {id: from+to, source: from, target:to}
+                data: {id: from + to, source: from, target: to}
             });
-            console.log("my edges " ,edg[0]); // debug print
-            console.log("my edges id " ,edg[0]._private.data.id);
+            console.log("my edges ", edg[0]); // debug print
+            console.log("my edges id ", edg[0]._private.data.id);
         }
         collectionToBeLinked = cy.collection();
     }
-
 });
 
 // cy.removeListener('click', makeALinke);
-
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -128,13 +128,13 @@ function alreadyIn(url) {
     return isItIn;
 }
 
-function alreadyLinked(edgId){
-    let isItIn = false ;
+function alreadyLinked(edgId) {
+    let isItIn = false;
     cy.edges().forEach((e) => {
-        if (e[0]._private.data.id == edgId){
+        if (e[0]._private.data.id == edgId) {
             console.log("edg alreadyLinked");
-            isItIn = true ;
+            isItIn = true;
         }
     });
-    return isItIn ;
+    return isItIn;
 }
