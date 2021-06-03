@@ -1,3 +1,5 @@
+
+// There is no need to this function ^^` 
 function openChoice(evt , the_choice){
     var i , choices_content, choices ;
 

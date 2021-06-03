@@ -71,9 +71,10 @@ function deselectAll() {
     });
 }
 
-// displayImgs :
- /* to see what the function does:
-/* git reset --hard 5876e132486fb32fbd4a670e8eaf99dd4475481e
+/** displayImgs :
+ * to see what the function does:
+ * $ git reset --hard 5876e132486fb32fbd4a670e8eaf99dd4475481e
+ *
  */
 function displayImgs() {
     var c = document.getElementById("myCanvas");
