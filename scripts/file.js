@@ -17,7 +17,7 @@ file.onchange = (() => {
     }
 });
 
-// pour trouver le colonne qui contient le minumeme de image
+// to find the column that contains the minimum number of images
 function minParent(parentNode) {
     let arry = [];
     parentNode.forEach((element, i) => {
@@ -38,7 +38,7 @@ function makeImag(imgsrc) {
     return img;
 }
 
-// to select :
+// what happens if we click on the images
 function on_select() {
     let imgs = document.querySelectorAll(".column img");
     // console.log("imgs : ", imgs);
@@ -71,7 +71,10 @@ function deselectAll() {
     });
 }
 
-// canvas test :
+// displayImgs :
+ /* to see what the function does:
+/* git reset --hard 5876e132486fb32fbd4a670e8eaf99dd4475481e
+ */
 function displayImgs() {
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext('2d');

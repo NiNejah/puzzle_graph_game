@@ -1,4 +1,5 @@
 
+/* # The Main Menu */
 .menu{
     overflow: hidden;
     border: 1px solid #ccc;
@@ -14,6 +15,7 @@
     padding: 14px 16px;
     transition: 0.3s;
 }
+
 .menu button:hover{
     background-color: #ddd;
 }
@@ -24,6 +26,7 @@
 
 .choices-content {
     /*display: none;*/
+    position: relative;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top:none ;
@@ -51,7 +54,7 @@
     cursor: pointer;
 }
 
-/* *** tooles *** */
+/* ********** Dashboard Tools ********** */
 .board-tools{
     overflow: hidden;
     position: fixed;
@@ -64,16 +67,6 @@
     transition: 0.7s;
     color: #818181;
 }
-
-/*.dashboard .addbtn {*/
-/*    color: #46786c;*/
-/*}*/
-/*.dashboard .selectAllbtn{*/
-/*    color: #806d12;*/
-/*}*/
-/*.dashboard .closebtn {*/
-/*    color: #a50069;*/
-/*}*/
 
 .dashboard .addbtn:hover{
   color: #24c19a;
@@ -98,14 +91,18 @@
 .img-row .column {
     flex: 20%;
     padding: 2px;
+    /*cursor: pointer;*/
 }
+
 .img-row .column .myImg {
     width: 95%;
     border: 2px solid #cccccc;
+    cursor: pointer;
 }
 .img-row .column .selectedImg {
     width: 95%;
-    border: 2px solid #ff0000;
+    border: 2px solid #77ff00;
+    cursor: pointer;
 }
 
 #main {
@@ -117,13 +114,14 @@
     .dashboard {padding-top: 15px;}
     .dashboard a {font-size: 10px;}
 }
-/********************************* fin sidebar *********************************/
+/********************************* the end of sidebar *********************************/
 
 /*canvas {*/
 /*    width: 100%;*/
 /*    height: 100%;*/
 /*    border: 1px solid #818181;*/
 /*}*/
+
 #Workshop{
     width: 94.8%;
     height: 85%;
@@ -137,5 +135,5 @@
     /*left: 0;*/
     /*top: 0;*/
     position: relative;
-    border: 2px solid #c60000;
+    border: 2px solid rgba(4, 33, 97, 0.97);
 }

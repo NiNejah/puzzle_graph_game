@@ -10,7 +10,7 @@ let cy = cytoscape({
 
     layout: {
         name: 'grid',
-        rows: 4
+        rows: 1
     },
 
     style: cytoscape.stylesheet()
@@ -33,6 +33,10 @@ let cy = cytoscape({
             'curve-style': 'bezier'
         }),
     pan: {x: 10, y: 10},
+    wheelSensitivity :0.3,
+    zoom : 1 ,
+    minZoom : 0.05,
+    maxZoom:5,
 
 });
 
@@ -43,7 +47,6 @@ function layoutRun(eles) {
         animate: true,
     });
     layout.run();
-    cy.centre();
 }
 
 function addImag() {
@@ -52,7 +55,7 @@ function addImag() {
     // to renduring juste the new elemants :
     let collection = cy.collection();
     for (let i = 0; i < slectedImgs.length; i++) {
-        console.log("src : ", slectedImgs[i]);
+        //console.log("src : ", slectedImgs[i]);
         let e = last_node_nb + 1;
         let imgUrl = 'url(' + slectedImgs[i].src + ')';
         if (alreadyIn(imgUrl)) {
@@ -74,19 +77,19 @@ function addImag() {
             last_node_nb++;
         }
         layoutRun(collection);
+        cy.center();
     }
 
     // let mye = cy.getElementById('1');
     // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
 
-cy.update
 let collectionToBeLinked = cy.collection();
 console.log("tout va bien ");
 cy.on('click', 'node' ,(e) => {
-    console.log("E hase clicked !", e.target);
+    // console.log("E hase clicked !", e.target);
     collectionToBeLinked = collectionToBeLinked.union(e.target);
-    console.log("alll to be link ", collectionToBeLinked, " length ", collectionToBeLinked.length);
+    // console.log("alll to be link ", collectionToBeLinked, " length ", collectionToBeLinked.length);
     if (collectionToBeLinked.length == 2) {
         let from = collectionToBeLinked[0]._private.data.id;
         let to = collectionToBeLinked[1]._private.data.id;
@@ -95,8 +98,8 @@ cy.on('click', 'node' ,(e) => {
                 group: 'edges',
                 data: {id: from + to, source: from, target: to}
             });
-            console.log("my edges ", edg[0]); // debug print
-            console.log("my edges id ", edg[0]._private.data.id);
+            // console.log("my edges ", edg[0]); // debug print
+            // console.log("my edges id ", edg[0]._private.data.id);
         }
         collectionToBeLinked = cy.collection();
     }
@@ -115,16 +118,17 @@ function alertMessage(src) {
 
 function alreadyIn(url) {
     let isItIn = false;
+    let mye ;
     cy.nodes().forEach((e) => {
         if (e._private.style["background-image"].strValue == url) {
             // console.log("alreadyIn : e = ", e._private.style["background-image"].strValue,"et url =", url);
             isItIn = true;
-            cy.zoom({
-                level: 1.5,
-                position: e.position()
-            });
         }
     });
+    // cy.zoom({
+    //     level: 1.2,
+    //     position: mye.position()
+    // });
     return isItIn;
 }
 
@@ -132,7 +136,7 @@ function alreadyLinked(edgId) {
     let isItIn = false;
     cy.edges().forEach((e) => {
         if (e[0]._private.data.id == edgId) {
-            console.log("edg alreadyLinked");
+            // console.log("edg alreadyLinked");
             isItIn = true;
         }
     });
