@@ -1,4 +1,6 @@
-
+* {
+    box-sizing: border-box;
+}
 /* # The Main Menu */
 .menu{
     overflow: hidden;
@@ -100,9 +102,15 @@
     cursor: pointer;
 }
 .img-row .column .selectedImg {
-    width: 95%;
-    border: 2px solid #77ff00;
+    width: 98%;
+    box-shadow: 0 0 2px 1px #77ff00;
+    border: 2px solid #cccccc;
     cursor: pointer;
+}
+
+.img-row .column img:hover {
+    width: 98%;
+    /*opacity: 0.8;*/
 }
 
 #main {
@@ -110,10 +118,38 @@
     padding: 20px;
 }
 
-@media screen and (max-height: 450px) {
-    .dashboard {padding-top: 15px;}
-    .dashboard a {font-size: 10px;}
-}
+
+/*@media screen and (min-width: 600px) {*/
+/*    .dashboard {*/
+/*        width: 250px;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 600px) {*/
+
+/*    .dashboard {*/
+/*        width: 100px;*/
+/*        padding-top: 15px;*/
+/*    }*/
+
+/*    .dashboard .board-tools {*/
+/*        width:60px;*/
+/*        padding: 1px;*/
+/*        text-align: center;*/
+/*    }*/
+
+/*    .dashboard .img-row {*/
+/*        display : block;*/
+/*    }*/
+/*    .dashboard a {*/
+/*        font-size: 10px;*/
+/*        margin-left: 0;*/
+/*    }*/
+/*    !*.dashboard img{*!*/
+/*    !*    float: none;*!*/
+/*    !*    width: 100%;*!*/
+/*    !*}*!*/
+/*}*/
+
 /********************************* the end of sidebar *********************************/
 
 /*canvas {*/

@@ -1,0 +1,10 @@
+[
+  {
+    "selector": "node",
+    "style": {
+      "color": "#fff",
+      "text-outline-color": "#888",
+      "text-outline-width": 3
+    }
+  }
+]

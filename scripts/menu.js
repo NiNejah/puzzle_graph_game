@@ -1,5 +1,5 @@
 
-// There is no need to this function ^^` 
+// There is no need to this function ^^`
 function openChoice(evt , the_choice){
     var i , choices_content, choices ;
 
@@ -20,8 +20,12 @@ function openChoice(evt , the_choice){
 
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 function openNav() {
-    document.getElementById("mySidebar").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
+    let w = window.innerWidth;
+    let dashboardWidth ;
+    if (w > 600) dashboardWidth = "250px";
+    else dashboardWidth = "100px";
+    document.getElementById("mySidebar").style.width = dashboardWidth;
+    document.getElementById("main").style.marginLeft = dashboardWidth;
     let board_tools = document.getElementById("btools");
     board_tools.style.display = "block";
 }

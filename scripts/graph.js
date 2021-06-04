@@ -1,13 +1,12 @@
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
 
-    // elements: [
-    //     {data: {id: 'a'}},
-    //     {data: {id: 'b'}},
-    //     {data: {id: 'c'}},
-    //     // {data: {id: 'ab', source: 'a', target: 'b'}}
-    // ],
-
+    elements: [
+        {data: {id: 'a'}},
+        {data: {id: 'b'}},
+        {data: {id: 'c'}},
+        {data: {id: 'ab', source: 'a', target: 'b'}}
+    ],
     layout: {
         name: 'grid',
         rows: 1
@@ -23,7 +22,10 @@ let cy = cytoscape({
             'shape': 'round-rectangle', //'barrel',
             'border-color': '#8ce8ff',
             'border-width': 3,
-            'border-opacity': 0.5
+            'border-opacity': 0.5,
+            // "color": "#fff",
+            "text-outline-color": "#888",
+            "text-outline-width": 3
         })
         .selector('edge')
         .css({
@@ -31,15 +33,29 @@ let cy = cytoscape({
             'line-color': '#ccc',
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier'
+        })
+        .selector('.to-be-linked')
+        .css({
+            "color": "red"
+        })
+        .selector('.normal')
+        .css({
+            "color": "#ffffff"
         }),
+
+
+    // style: fetch('cy-style.json').then(function(res){
+    //     return res.json();
+    // }),
+
     pan: {x: 10, y: 10},
-    wheelSensitivity :0.3,
-    zoom : 1 ,
-    minZoom : 0.05,
-    maxZoom:5,
+    wheelSensitivity: 0.3,
+    zoom: 1,
+    minZoom: 0.05,
+    maxZoom: 5,
 
 });
-
+cy.nodes().classes('normal')
 
 function layoutRun(eles) {
     let layout = eles.layout({
@@ -49,6 +65,14 @@ function layoutRun(eles) {
     layout.run();
 }
 
+
+/////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////// Set Functions  /////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+//# Insert :
+
+////// Add Images In The Canvas \\\\\\
 function addImag() {
     var slectedImgs = document.getElementsByClassName("selectedImg");
     let last_node_nb = cy.nodes().length;
@@ -66,6 +90,7 @@ function addImag() {
                 data: {id: e},
                 position: {x: 300, y: 200}
             });
+            ele.addClass("normal");
             cy.style()
                 .selector('#' + String(e))
                 .style({
@@ -79,34 +104,80 @@ function addImag() {
         layoutRun(collection);
         cy.center();
     }
-
     // let mye = cy.getElementById('1');
     // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
 
+////// Link The Nodes \\\\\\
+
 let collectionToBeLinked = cy.collection();
-console.log("tout va bien ");
-cy.on('click', 'node' ,(e) => {
-    // console.log("E hase clicked !", e.target);
-    collectionToBeLinked = collectionToBeLinked.union(e.target);
-    // console.log("alll to be link ", collectionToBeLinked, " length ", collectionToBeLinked.length);
-    if (collectionToBeLinked.length == 2) {
-        let from = collectionToBeLinked[0]._private.data.id;
-        let to = collectionToBeLinked[1]._private.data.id;
-        if (!alreadyLinked(from + to)) {
-            let edg = cy.add({
-                group: 'edges',
-                data: {id: from + to, source: from, target: to}
-            });
-            // console.log("my edges ", edg[0]); // debug print
-            // console.log("my edges id ", edg[0]._private.data.id);
-        }
+
+function changeTheClassName(e,from,to){
+    e.removeClass(from)
+    e.addClass(to)
+}
+
+function resetAllClassName(){
+    cy.nodes().classes('to-be-linked').forEach((e) => {
+        changeTheClassName(e,'to-be-linked','normal');
+    });
+}
+
+let addLink = ((evt) => {
+    let evtTarget = evt.target;
+    console.log("the evnt :",evtTarget)
+    if (evtTarget === cy){
+        console.log("je suis dans 1");
         collectionToBeLinked = cy.collection();
+        resetAllClassName();
     }
+    else {
+        let evntTagGroup =evtTarget[0]._private.group
+        if (evntTagGroup === 'nodes'){
+            console.log("je suis dans 2 ");
+            collectionToBeLinked = collectionToBeLinked.union(evtTarget);
+            let eId = evtTarget[0]._private.data.id;
+            console.log("id", eId)
+            // to change the class from normal to to be linked
+            changeTheClassName(cy.$id(eId),'normal','to-be-linked');
+            if (collectionToBeLinked.length == 2) {
+                let from = collectionToBeLinked[0]._private.data.id;
+                let to = collectionToBeLinked[1]._private.data.id;
+                if (!alreadyLinked(from + to)) {
+                    let edg = cy.add({
+                        group: 'edges',
+                        data: {id: from + to, source: from, target: to}
+                    });
+                }
+                collectionToBeLinked = cy.collection();
+            }
+            if (collectionToBeLinked.length == 0) {
+                resetAllClassName();
+            }
+        }
+        else {
+            evtTarget.remove()
+            console.log("je suis dans 3");
+            collectionToBeLinked = cy.collection();
+            resetAllClassName();
+        }
+    }
+
 });
+cy.on('tap',addLink)
 
-// cy.removeListener('click', makeALinke);
 
+//# remove :
+// cy.dblclick();
+//
+// cy.nodes().on('dblclick',(e) => {
+//     console.log("je suis dans ondblclick !");
+//     cy.remove(e.target);
+// })
+
+cy.on('click', 'edges', (e) => {
+
+})
 
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////// Verification Functions  ////////////////////////////
@@ -118,7 +189,7 @@ function alertMessage(src) {
 
 function alreadyIn(url) {
     let isItIn = false;
-    let mye ;
+    // let mye ;
     cy.nodes().forEach((e) => {
         if (e._private.style["background-image"].strValue == url) {
             // console.log("alreadyIn : e = ", e._private.style["background-image"].strValue,"et url =", url);
@@ -142,3 +213,6 @@ function alreadyLinked(edgId) {
     });
     return isItIn;
 }
+
+
+
