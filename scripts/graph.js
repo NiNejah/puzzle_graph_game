@@ -1,3 +1,4 @@
+// Init :
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
 
@@ -48,9 +49,9 @@ let cy = cytoscape({
     //     return res.json();
     // }),
 
-    pan: {x: 10, y: 10},
+    // pan: {x: 10, y: 10},
     wheelSensitivity: 0.3,
-    zoom: 1,
+    zoom: 5,
     minZoom: 0.05,
     maxZoom: 5,
 
@@ -88,7 +89,7 @@ function addImag() {
             let ele = cy.add({
                 group: 'nodes',
                 data: {id: e},
-                position: {x: 300, y: 200}
+                // position: {x: 300, y: 200}
             });
             ele.addClass("normal");
             cy.style()
@@ -102,8 +103,11 @@ function addImag() {
             last_node_nb++;
         }
         layoutRun(collection);
-        cy.center();
+
     }
+    setTimeout( function(){
+        cy.reset();
+    }, 1000 );
     // let mye = cy.getElementById('1');
     // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
@@ -112,50 +116,43 @@ function addImag() {
 
 let collectionToBeLinked = cy.collection();
 
-function changeTheClassName(e,from,to){
-    e.removeClass(from)
-    e.addClass(to)
-}
-
-function resetAllClassName(){
-    cy.nodes().classes('to-be-linked').forEach((e) => {
-        changeTheClassName(e,'to-be-linked','normal');
-    });
-}
-
 let addLink = ((evt) => {
     let evtTarget = evt.target;
-    console.log("the evnt :",evtTarget)
-    if (evtTarget === cy){
-        console.log("je suis dans 1");
+    if (evtTarget === cy) {
+        console.log("click en vide ");
         collectionToBeLinked = cy.collection();
         resetAllClassName();
-    }
-    else {
-        let evntTagGroup =evtTarget[0]._private.group
-        if (evntTagGroup === 'nodes'){
-            console.log("je suis dans 2 ");
+    } else {
+        let evntTagGroup = getGroup(evtTarget[0]);
+        if (isNodes(evntTagGroup)) {
+            console.log("click sur node !");
             collectionToBeLinked = collectionToBeLinked.union(evtTarget);
-            let eId = evtTarget[0]._private.data.id;
-            console.log("id", eId)
-            // to change the class from normal to to be linked
-            changeTheClassName(cy.$id(eId),'normal','to-be-linked');
-            if (collectionToBeLinked.length == 2) {
-                let from = collectionToBeLinked[0]._private.data.id;
-                let to = collectionToBeLinked[1]._private.data.id;
-                if (!alreadyLinked(from + to)) {
-                    let edg = cy.add({
-                        group: 'edges',
-                        data: {id: from + to, source: from, target: to}
-                    });
-                }
-                collectionToBeLinked = cy.collection();
+            switch (collectionToBeLinked.length ) {
+                case 1 :
+                    let eId = getId(evtTarget[0]);
+                    console.log("id", eId)
+                    // to change the class from normal to to be linked
+                    changeTheClassName(cy.$id(eId), 'normal', 'to-be-linked');
+                    break;
+                case 2:
+                    let from = getId(collectionToBeLinked[0]);
+                    let to = getId(collectionToBeLinked[1]);
+                    if (!alreadyLinked(from + to)) {
+                        let edg = cy.add({
+                            group: 'edges',
+                            data: {id: from + to, source: from, target: to}
+                        });
+                    } else {
+                        console.log("already Linked !");
+                    }
+                    collectionToBeLinked = cy.collection();
+                    resetAllClassName();
+                    break;
+                default:
+                    break;
             }
-            if (collectionToBeLinked.length == 0) {
-                resetAllClassName();
-            }
-        }
-        else {
+        // EDG :
+        } else {
             evtTarget.remove()
             console.log("je suis dans 3");
             collectionToBeLinked = cy.collection();
@@ -164,20 +161,10 @@ let addLink = ((evt) => {
     }
 
 });
-cy.on('tap',addLink)
 
+// lesteuner
+cy.on('tap', addLink)
 
-//# remove :
-// cy.dblclick();
-//
-// cy.nodes().on('dblclick',(e) => {
-//     console.log("je suis dans ondblclick !");
-//     cy.remove(e.target);
-// })
-
-cy.on('click', 'edges', (e) => {
-
-})
 
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////// Verification Functions  ////////////////////////////
@@ -189,29 +176,52 @@ function alertMessage(src) {
 
 function alreadyIn(url) {
     let isItIn = false;
-    // let mye ;
     cy.nodes().forEach((e) => {
-        if (e._private.style["background-image"].strValue == url) {
+        if (getBackgroundUrl(e) === url) {
             // console.log("alreadyIn : e = ", e._private.style["background-image"].strValue,"et url =", url);
             isItIn = true;
         }
     });
-    // cy.zoom({
-    //     level: 1.2,
-    //     position: mye.position()
-    // });
     return isItIn;
 }
 
 function alreadyLinked(edgId) {
-    let isItIn = false;
+    let isLinked = false;
     cy.edges().forEach((e) => {
-        if (e[0]._private.data.id == edgId) {
-            // console.log("edg alreadyLinked");
-            isItIn = true;
-        }
+        if ( getId(e[0]) === edgId) isLinked = true;
     });
-    return isItIn;
+    return isLinked;
+}
+
+function isNodes(e) { return e === 'nodes';}
+
+function isEdges(e) {return e === 'edges';}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// get Functions  /////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+function getId(e) { return e._private.data.id;}
+
+function getGroup(e) {return e._private.group;}
+
+function getBackgroundUrl(e) { return e._private.style["background-image"].strValue}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// set Functions  /////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+function changeTheClassName(e, from, to) {
+    e.removeClass(from)
+    e.addClass(to)
+}
+
+function resetAllClassName() {
+    cy.nodes().classes('to-be-linked').forEach((e) => {
+        changeTheClassName(e, 'to-be-linked', 'normal');
+    });
 }
 
 
