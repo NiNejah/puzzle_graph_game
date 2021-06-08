@@ -38,6 +38,7 @@ let cy = cytoscape({
         .selector('.to-be-linked')
         .css({
             "color": "red"
+            // 'border-color': '#ff0000',
         })
         .selector('.normal')
         .css({
@@ -51,7 +52,7 @@ let cy = cytoscape({
 
     // pan: {x: 10, y: 10},
     wheelSensitivity: 0.3,
-    zoom: 5,
+    zoom: 10,
     minZoom: 0.05,
     maxZoom: 5,
 
@@ -112,6 +113,7 @@ function addImag() {
     // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
 
+
 ////// Link The Nodes \\\\\\
 
 let collectionToBeLinked = cy.collection();
@@ -153,16 +155,16 @@ let addLink = ((evt) => {
             }
         // EDG :
         } else {
-            evtTarget.remove()
+            evtTarget.remove();
             console.log("je suis dans 3");
             collectionToBeLinked = cy.collection();
             resetAllClassName();
         }
     }
-
 });
 
-// lesteuner
+
+// Listener :
 cy.on('tap', addLink)
 
 
@@ -223,6 +225,16 @@ function resetAllClassName() {
         changeTheClassName(e, 'to-be-linked', 'normal');
     });
 }
+
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// Export Functions  /////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+function saveAsImg(){
+    let myimg = cy.jpg();
+    window.location.href =myimg;
+}
+
 
 
 

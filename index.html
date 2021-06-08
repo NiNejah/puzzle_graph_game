@@ -3,89 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+          integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
-    <script src="scripts/menu.js" ></script>
+    <script src="scripts/menu.js"></script>
     <script src="./cy_package/cytoscape.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
     <script src="https://unpkg.com/cytoscape-dblclick/dist/index.js"></script>
     <title>img</title>
 </head>
 <body>
-    <main>
-        <div class="all">
-            <!-- image : -->
-            <div id="mySidebar" class="dashboard">
+<main>
+    <div class="all">
+        <!-- image : -->
+        <div id="mySidebar" class="dashboard">
 
-                <div class="board-tools" id ="btools">
-                    <a class="addbtn" onclick="addImag()" title ="add to the workshop"><i class="fas fa-plus-circle"></i></a>
-                    <a class="selectAllbtn" onclick="selectAll()" title ="select all"><i class="fas fa-border-all"></i></a>
-                    <a class="deselectAllbtn" onclick="deselectAll()" title ="deselect all"><i class="fas fa-object-group"></i></a>
-                    <a class="closebtn" href="javascript:void(0)"  onclick="closeNav()" title ="close"><i class="fas fa-times-circle"></i></a>
-                </div>
-
-                <div class="img-row" onclick="on_select()">
-                    <div class="column">
-<!--                        FOR TESTING-->
-                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg" alt="my img">
-                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">
-                        <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">
-                        <img src="img_test1/23iwmde%20(1).jpg" class="myImg">
-                        <img src="img_test1/Lammasu.jpg" class="myImg">
-                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">
-                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">
-                        <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">
-<!--                        <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
-<!--                        <img src="img_test1/Lammasu.jpg" class="myImg">-->
-                    </div>
-                    <div class="column">
-<!--                        <img src="img_test2/chat2.png" class="selectedImg">-->
-<!--                         FOR TESTING -->
-                        <img src="img_test1/CarteIrak10.jpg" class="myImg">
-                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">
-                        <img src="img_test1/3294289.jpg" class="myImg">
-                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">
-                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">
-                        <img src="img_test1/CarteIrak10.jpg" class="myImg">
-                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">
-                        <img src="img_test1/3294289.jpg" class="myImg">
-                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">
-<!--                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">-->
-                    </div>
-                </div>
-
+            <div class="board-tools" id="btools">
+                <a class="addbtn" onclick="addImag()" title="add to the workshop"><i class="fas fa-plus-circle"></i></a>
+                <a class="selectAllbtn" onclick="selectAll()" title="select all"><i class="fas fa-border-all"></i></a>
+                <a class="deselectAllbtn" onclick="deselectAll()" title="deselect all"><i
+                        class="fas fa-object-group"></i></a>
+                <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close"><i
+                        class="fas fa-times-circle"></i></a>
             </div>
 
-            <div id="main" class="menu-body">
-                <div class="menu">
-                    <div class="choices" id="ch-download" >
-                    <label for="files">
-                        <input type="file" name="files" id="myfiles" style="display:none" webkitdirectory="" directory="">
-                        <button id="filebtn" onclick="document.getElementById('myfiles').click()"><i class="fas fa-download fa-2X"></i> open new file </button>
-                    </label>
-                    </div>
-                    <button class="choices" onclick="openNav()"><i class="fas fa-check" ></i> Selected</button>
-                    <button class="choices" onclick ="openChoice(event,'Workshop')"> <i class="fas fa-pencil-ruler"></i> Workshop</button>
+            <div class="img-row" onclick="on_select()">
+                <div class="no-img-info" id="info">There's no image to display please upload a file by clicking on "open
+                    new file"
                 </div>
-
-                <div class="content">
-                    <div id="Workshop" class="choices-content">
-                        <div id="cy"></div>
-                        <a href="https://js.cytoscape.org/#cy.$" target="_blank">ou je suis dans (cytoscape)</a>
-
-                        <!--                        <canvas id="myCanvas" style="border:1px solid #000000;">-->
-<!--                            -->
-<!--                        </canvas>-->
-<!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
-                    </div>
-
+                <div class="column">
+                    <!--                        FOR TESTING-->
+                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg" alt="my img">-->
+                    <!--                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/Lammasu.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/Lammasu.jpg" class="myImg">-->
+                </div>
+                <div class="column">
+                    <!--                        <img src="img_test2/chat2.png" class="selectedImg">-->
+                    <!--                         FOR TESTING -->
+                    <!--                        <img src="img_test1/CarteIrak10.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">-->
+                    <!--                        <img src="img_test1/3294289.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/CarteIrak10.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">-->
+                    <!--                        <img src="img_test1/3294289.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
+                    <!--                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">-->
                 </div>
             </div>
-
 
         </div>
-    </main>
-    <script src="scripts/file.js" ></script>
-    <script src="scripts/graph.js"></script>
+
+        <div id="main" class="menu-body">
+            <div class="menu">
+                <div class="choices" id="ch-download">
+                    <label for="files">
+                        <input type="file" name="files" id="myfiles" style="display:none" webkitdirectory=""
+                               directory="">
+                        <button id="filebtn" onclick="document.getElementById('myfiles').click()"><i
+                                class="fas fa-download fa-2X"></i> open new file
+                        </button>
+                    </label>
+                </div>
+                <button class="choices" onclick="openNav()"><i class="fas fa-check"></i> Selected</button>
+                <button class="choices" onclick="openChoice(event,'Workshop')"><i class="fas fa-pencil-ruler"></i>
+                    Workshop
+                </button>
+            </div>
+
+            <div class="content">
+                <div id="Workshop" class="choices-content">
+                    <div id="cy"></div>
+                    <div id="save">
+                        <button class="save-img" onclick="saveAsImg()"><i class="fas fa-save"></i> save as img</button>
+                        <button class="save-json" onclick=""><i class="fas fa-file-export"></i> save as json</button>
+                    </div>
+                    <!--                    <a href="https://js.cytoscape.org/#cy.$" target="_blank">ou je suis dans (cytoscape)</a>-->
+
+                    <!--                        <canvas id="myCanvas" style="border:1px solid #000000;">-->
+                    <!--                            -->
+                    <!--                        </canvas>-->
+                    <!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</main>
+<script src="scripts/file.js"></script>
+<script src="scripts/graph.js"></script>
 </body>
 </html>

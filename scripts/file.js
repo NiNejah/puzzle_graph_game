@@ -3,6 +3,8 @@ let file = document.getElementById("myfiles");
 let columns = document.querySelectorAll(".column");
 
 file.onchange = (() => {
+    let info = document.getElementById("info");
+    info.style.display = "none";
     arrImg = [];
     for (const key in file.files) {
         if (file.files.hasOwnProperty(key)) {

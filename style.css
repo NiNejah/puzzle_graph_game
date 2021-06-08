@@ -83,6 +83,15 @@
     color: #ff003b;
 }
 
+.no-img-info{
+    color: rgba(198, 198, 198, 0.86);
+    font-size: 16px;
+    padding: 2px;
+    margin: 2px;
+    font-family: Monospace;
+    text-align: center;
+}
+
 /* IMG */
 .img-row {
     display: flex;
