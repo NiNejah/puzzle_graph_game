@@ -1,13 +1,14 @@
+
 // Init :
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
 
-    elements: [
-        {data: {id: 'a'}},
-        {data: {id: 'b'}},
-        {data: {id: 'c'}},
-        {data: {id: 'ab', source: 'a', target: 'b'}}
-    ],
+    // elements: [
+    //     {data: {id: 'a'}},
+    //     {data: {id: 'b'}},
+    //     {data: {id: 'c'}},
+    //     {data: {id: 'ab', source: 'a', target: 'b'}}
+    // ],
     layout: {
         name: 'grid',
         rows: 1
@@ -233,6 +234,40 @@ function resetAllClassName() {
 function saveAsImg(){
     let myimg = cy.jpg();
     window.location.href =myimg;
+}
+
+function saveAsJson(){
+   let toBeSaved = cy.json();
+   console.log("touut :",toBeSaved);
+    let mydata = JSON.stringify(toBeSaved,null,2);
+    console.log(mydata);
+    saveTextAsFile(mydata)
+}
+
+function saveTextAsFile(data) {
+    var textToWrite = data
+    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+    var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    if (window.webkitURL != null)
+    {
+        // Chrome allows the link to be clicked
+        // without actually adding it to the DOM.
+        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    }
+    else
+    {
+        // Firefox requires the link to be added to the DOM
+        // before it can be clicked.
+        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+    }
+
+    downloadLink.click();
 }
 
 
