@@ -34,15 +34,15 @@
                 <div class="column">
                     <!--                        FOR TESTING-->
                     <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg" alt="my img">-->
-                    <!--                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Lammasu.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Lammasu.jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/Lammasu.jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
+                    <!--                    <img src="img_test1/Lammasu.jpg" class="myImg">-->
                 </div>
                 <div class="column">
                     <!--                        <img src="img_test2/chat2.png" class="selectedImg">-->
@@ -63,13 +63,14 @@
         </div>
 
         <div id="main" class="menu-body">
+
             <div class="menu">
                 <div class="choices" id="ch-download">
                     <label for="files">
                         <input type="file" name="files" id="myfiles" style="display:none" webkitdirectory=""
                                directory="">
                         <button id="filebtn" onclick="document.getElementById('myfiles').click()"><i
-                                class="fas fa-download fa-2X"></i> open new file
+                                class="fas fa-download fa-2X"></i> Open new file
                         </button>
                     </label>
                 </div>
@@ -77,22 +78,38 @@
                 <button class="choices" onclick="openChoice(event,'Workshop')"><i class="fas fa-pencil-ruler"></i>
                     Workshop
                 </button>
+                <button class="choices" onclick="openChoice(event,'Help')"><i class="fas fa-help"></i>
+                    Help
+                </button>
             </div>
 
-            <div class="content">
-                <div id="Workshop" class="choices-content">
-                    <div id="cy"></div>
-                    <div id="save">
-                        <button class="save-img" onclick="saveAsImg()"><i class="fas fa-save"></i> save as img</button>
-<!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
-                        <button class="save-json" onclick="saveAsJson()"><i class="fas fa-file-export"></i> save as JSON</button>
-                        <input id="inputFileNameToSaveAs">
-                    </div>
-                    <!--                    <a href="https://js.cytoscape.org/#cy.$" target="_blank">ou je suis dans (cytoscape)</a>-->
 
-                    <!--                        <canvas id="myCanvas" style="border:1px solid #000000;">-->
-                    <!--                            -->
-                    <!--                        </canvas>-->
+            <div class="content">
+                <!--                choices-content-->
+                <div id="Workshop" class="choices-content">
+
+                    <div id="cy"></div>
+
+                    <div class="saving" onmouseleave="">
+
+                        <div id="saveList" class="save-list" >
+
+                            <div class="save-ele">
+                                <span class="close" onclick="closeSaveList()">&times;</span>
+                                <h2 class="saving-titel"> SAVING </h2>
+                                <input type="text" id="FileName" name="fname" placeholder="file name"><br>
+                                <button class="save-img" onclick="saveAsImg(true)">.jpg </button>
+                                <button class="save-img" onclick="saveAsImg(false)">.png </button>
+                                <!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
+                                <button class="save-json" onclick="saveAsJson()">.JSON </button>
+                                <br>
+                            </div>
+                        </div>
+
+                        <button class="open-save" onclick="openSaveList()" title="saving"><i class="fas fa-save"></i></button>
+
+                    </div>
+
                     <!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
                 </div>
 

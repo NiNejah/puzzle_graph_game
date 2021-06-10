@@ -1,4 +1,3 @@
-
 // Init :
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
@@ -107,9 +106,9 @@ function addImag() {
         layoutRun(collection);
 
     }
-    setTimeout( function(){
+    setTimeout(function () {
         cy.reset();
-    }, 1000 );
+    }, 1000);
     // let mye = cy.getElementById('1');
     // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
@@ -130,7 +129,7 @@ let addLink = ((evt) => {
         if (isNodes(evntTagGroup)) {
             console.log("click sur node !");
             collectionToBeLinked = collectionToBeLinked.union(evtTarget);
-            switch (collectionToBeLinked.length ) {
+            switch (collectionToBeLinked.length) {
                 case 1 :
                     let eId = getId(evtTarget[0]);
                     console.log("id", eId)
@@ -154,7 +153,7 @@ let addLink = ((evt) => {
                 default:
                     break;
             }
-        // EDG :
+            // EDG :
         } else {
             evtTarget.remove();
             console.log("je suis dans 3");
@@ -191,25 +190,35 @@ function alreadyIn(url) {
 function alreadyLinked(edgId) {
     let isLinked = false;
     cy.edges().forEach((e) => {
-        if ( getId(e[0]) === edgId) isLinked = true;
+        if (getId(e[0]) === edgId) isLinked = true;
     });
     return isLinked;
 }
 
-function isNodes(e) { return e === 'nodes';}
+function isNodes(e) {
+    return e === 'nodes';
+}
 
-function isEdges(e) {return e === 'edges';}
+function isEdges(e) {
+    return e === 'edges';
+}
 
 
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////// get Functions  /////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function getId(e) { return e._private.data.id;}
+function getId(e) {
+    return e._private.data.id;
+}
 
-function getGroup(e) {return e._private.group;}
+function getGroup(e) {
+    return e._private.group;
+}
 
-function getBackgroundUrl(e) { return e._private.style["background-image"].strValue}
+function getBackgroundUrl(e) {
+    return e._private.style["background-image"].strValue
+}
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -231,43 +240,48 @@ function resetAllClassName() {
 /////////////////////////////// Export Functions  /////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function saveAsImg(){
-    let myimg = cy.jpg();
-    window.location.href =myimg;
+function saveAsImg(isJpg) {
+    let myImg = cy.jpg();
+    if (!isJpg) myImg = cy.png()
+    console.log("myImg :", myImg);
+    var a = document.createElement("a"); //Create <a>
+    a.href = myImg; //Image Base64 Goes here
+    a.download = document.getElementById("FileName").value;
+    a.click();
+    // window.location.href = myimg;
 }
 
-function saveAsJson(){
-   let toBeSaved = cy.json();
-   console.log("touut :",toBeSaved);
-    let mydata = JSON.stringify(toBeSaved,null,2);
-    console.log(mydata);
+function saveAsJson() {
+    let toBeSaved = cy.json();
+    // console.log("touut :",toBeSaved);
+    let mydata = JSON.stringify(toBeSaved, null, 2);
+    // console.log(mydata);
     saveTextAsFile(mydata)
 }
 
 function saveTextAsFile(data) {
     var textToWrite = data
-    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-    var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+    var textFileAsBlob = new Blob([textToWrite], {type: 'text/plain'});
+    var fileNameToSaveAs = document.getElementById("FileName").value;
     var downloadLink = document.createElement("a");
-    downloadLink.download = fileNameToSaveAs;
+    downloadLink.download = fileNameToSaveAs +'.json';
     downloadLink.innerHTML = "Download File";
-    if (window.webkitURL != null)
-    {
-        // Chrome allows the link to be clicked
-        // without actually adding it to the DOM.
-        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-    }
-    else
-    {
-        // Firefox requires the link to be added to the DOM
-        // before it can be clicked.
-        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-        downloadLink.onclick = destroyClickedElement;
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-    }
-
+    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
     downloadLink.click();
+
+    //
+    // if (window.webkitURL != null) {
+    //     // Chrome allows the link to be clicked
+    //     // without actually adding it to the DOM.
+    //     downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+    // } else {
+    //     // Firefox requires the link to be added to the DOM
+    //     // before it can be clicked.
+    //     downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    //     downloadLink.onclick = destroyClickedElement;
+    //     downloadLink.style.display = "none";
+    //     document.body.appendChild(downloadLink);
+    // }
 }
 
 
