@@ -1,3 +1,8 @@
+
+let jsonFile = document.getElementById('jsonFile');
+console.log('jsonFile', jsonFile.files)
+
+// jsonFile.onchange(()=>) ;
 // Init :
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
@@ -77,21 +82,30 @@ function layoutRun(eles) {
 ////// Add Images In The Canvas \\\\\\
 function addImag() {
     var slectedImgs = document.getElementsByClassName("selectedImg");
+
+    if (slectedImgs.length > 0) displayCy();     // TO Display the CY :
+
     let last_node_nb = cy.nodes().length;
+
     // to renduring juste the new elemants :
     let collection = cy.collection();
+
     for (let i = 0; i < slectedImgs.length; i++) {
-        //console.log("src : ", slectedImgs[i]);
+        console.log("src : ", slectedImgs[i]);
         let e = last_node_nb + 1;
         let imgUrl = 'url(' + slectedImgs[i].src + ')';
+        console.log("URL:", imgUrl);
+
         if (alreadyIn(imgUrl)) {
             alertMessage(slectedImgs[i].src);
+
         } else {
             let ele = cy.add({
                 group: 'nodes',
                 data: {id: e},
                 // position: {x: 300, y: 200}
             });
+
             ele.addClass("normal");
             cy.style()
                 .selector('#' + String(e))
@@ -121,18 +135,18 @@ let collectionToBeLinked = cy.collection();
 let addLink = ((evt) => {
     let evtTarget = evt.target;
     if (evtTarget === cy) {
-        console.log("click en vide ");
+        // console.log("click en vide ");
         collectionToBeLinked = cy.collection();
         resetAllClassName();
     } else {
         let evntTagGroup = getGroup(evtTarget[0]);
         if (isNodes(evntTagGroup)) {
-            console.log("click sur node !");
+            // console.log("click sur node !");
             collectionToBeLinked = collectionToBeLinked.union(evtTarget);
             switch (collectionToBeLinked.length) {
                 case 1 :
                     let eId = getId(evtTarget[0]);
-                    console.log("id", eId)
+                    // console.log("id", eId)
                     // to change the class from normal to to be linked
                     changeTheClassName(cy.$id(eId), 'normal', 'to-be-linked');
                     break;
@@ -151,6 +165,8 @@ let addLink = ((evt) => {
                     resetAllClassName();
                     break;
                 default:
+                    collectionToBeLinked = cy.collection();
+                    resetAllClassName();
                     break;
             }
             // EDG :
@@ -237,13 +253,13 @@ function resetAllClassName() {
 }
 
 /////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////// Export Functions  /////////////////////////////////
+/////////////////////////////// Export Functions  ///////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 function saveAsImg(isJpg) {
     let myImg = cy.jpg();
     if (!isJpg) myImg = cy.png()
-    console.log("myImg :", myImg);
+    // console.log("myImg :", myImg);
     var a = document.createElement("a"); //Create <a>
     a.href = myImg; //Image Base64 Goes here
     a.download = document.getElementById("FileName").value;
@@ -264,26 +280,20 @@ function saveTextAsFile(data) {
     var textFileAsBlob = new Blob([textToWrite], {type: 'text/plain'});
     var fileNameToSaveAs = document.getElementById("FileName").value;
     var downloadLink = document.createElement("a");
-    downloadLink.download = fileNameToSaveAs +'.json';
+    downloadLink.download = fileNameToSaveAs + '.json';
     downloadLink.innerHTML = "Download File";
     downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
     downloadLink.click();
-
-    //
-    // if (window.webkitURL != null) {
-    //     // Chrome allows the link to be clicked
-    //     // without actually adding it to the DOM.
-    //     downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-    // } else {
-    //     // Firefox requires the link to be added to the DOM
-    //     // before it can be clicked.
-    //     downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-    //     downloadLink.onclick = destroyClickedElement;
-    //     downloadLink.style.display = "none";
-    //     document.body.appendChild(downloadLink);
-    // }
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////// Display Functions  /////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+function displayCy() {
+    document.getElementById("load-graph").style.display = "none";
+    document.getElementById("new-graph").style.display = "block";
+}
 
 
 

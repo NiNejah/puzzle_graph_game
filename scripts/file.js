@@ -3,8 +3,11 @@ let file = document.getElementById("myfiles");
 let columns = document.querySelectorAll(".column");
 
 file.onchange = (() => {
+
+    // TO endisplay the inf in "selected"
     let info = document.getElementById("info");
     info.style.display = "none";
+
     arrImg = [];
     for (const key in file.files) {
         if (file.files.hasOwnProperty(key)) {
@@ -99,6 +102,8 @@ function displayImgs() {
     }
     return true;
 }
+
+// To Graph :
 
 
 
