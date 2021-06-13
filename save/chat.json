@@ -1,0 +1,480 @@
+{
+  "elements": {
+    "nodes": [
+      {
+        "data": {
+          "id": "1"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "2"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "3"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "4"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "5"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "6"
+        },
+        "position": {
+          "x": 84.95405004860729,
+          "y": 95.9481035843095
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "7"
+        },
+        "position": {
+          "x": 24.986485308413947,
+          "y": 211.88539541534996
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "8"
+        },
+        "position": {
+          "x": -74.95945592524174,
+          "y": 325.82376842171743
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "9"
+        },
+        "position": {
+          "x": 48.973511204491246,
+          "y": -106.94215712001156
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "10"
+        },
+        "position": {
+          "x": -92.94972534729976,
+          "y": -92.94972534729976
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "11"
+        },
+        "position": {
+          "x": -119.93512948038678,
+          "y": 116.93675124337712
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "12"
+        },
+        "position": {
+          "x": 111.9394541816943,
+          "y": -30.98324178243326
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "13"
+        },
+        "position": {
+          "x": 115.93729183104055,
+          "y": 354.8080913794777
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "14"
+        },
+        "position": {
+          "x": 192.8956665809554,
+          "y": 161.91242479852215
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "id": "811",
+          "source": "8",
+          "target": "11"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "813",
+          "source": "8",
+          "target": "13"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "1413",
+          "source": "14",
+          "target": "13"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "147",
+          "source": "14",
+          "target": "7"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "116",
+          "source": "11",
+          "target": "6"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      }
+    ]
+  },
+  "style": [
+    {
+      "selector": "node",
+      "style": {
+        "height": "80px",
+        "width": "80px",
+        "background-fit": "cover",
+        "label": "data(id)",
+        "shape": "round-rectangle",
+        "border-color": "rgb(140,232,255)",
+        "border-width": "3px",
+        "border-opacity": "0.5",
+        "text-outline-color": "rgb(136,136,136)",
+        "text-outline-width": "3px"
+      }
+    },
+    {
+      "selector": "edge",
+      "style": {
+        "width": "3px",
+        "line-color": "rgb(204,204,204)",
+        "target-arrow-shape": "triangle",
+        "curve-style": "bezier"
+      }
+    },
+    {
+      "selector": ".to-be-linked",
+      "style": {
+        "color": "rgb(255,0,0)"
+      }
+    },
+    {
+      "selector": ".normal",
+      "style": {
+        "color": "rgb(255,255,255)"
+      }
+    },
+    {
+      "selector": "#1",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/_154952_gwadL.jpg)"
+      }
+    },
+    {
+      "selector": "#2",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/Capture%20d%E2%80%99%C3%A9cran%20de%202021-05-09%2016-53-14.png)"
+      }
+    },
+    {
+      "selector": "#3",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/celia/clipart2314530.png)"
+      }
+    },
+    {
+      "selector": "#4",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/celia/herbe.png)"
+      }
+    },
+    {
+      "selector": "#5",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/chat2.png)"
+      }
+    },
+    {
+      "selector": "#6",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/chat4.png)"
+      }
+    },
+    {
+      "selector": "#7",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/tent.png)"
+      }
+    },
+    {
+      "selector": "#8",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/build.png)"
+      }
+    },
+    {
+      "selector": "#9",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/celia/chat1.png)"
+      }
+    },
+    {
+      "selector": "#10",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/celia/heart-157895_1280.png)"
+      }
+    },
+    {
+      "selector": "#11",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/celia/tree.png)"
+      }
+    },
+    {
+      "selector": "#12",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/chat3.png)"
+      }
+    },
+    {
+      "selector": "#13",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/rectSir.png)"
+      }
+    },
+    {
+      "selector": "#14",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test2/tent_lose.png)"
+      }
+    }
+  ],
+  "data": {},
+  "zoomingEnabled": true,
+  "userZoomingEnabled": true,
+  "zoom": 1.0000000000000016,
+  "minZoom": 0.05,
+  "maxZoom": 5,
+  "panningEnabled": true,
+  "userPanningEnabled": true,
+  "pan": {
+    "x": 264.4014390295476,
+    "y": 151.0448442504114
+  },
+  "boxSelectionEnabled": true,
+  "renderer": {
+    "name": "canvas"
+  },
+  "wheelSensitivity": 0.3
+}

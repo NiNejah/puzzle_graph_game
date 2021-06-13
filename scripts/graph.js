@@ -1,68 +1,100 @@
-
+let is_load = false;
 let jsonFile = document.getElementById('jsonFile');
-console.log('jsonFile', jsonFile.files)
 
-// jsonFile.onchange(()=>) ;
-// Init :
-let cy = cytoscape({
-    container: document.getElementById('cy'),// container to render in
-
-    // elements: [
-    //     {data: {id: 'a'}},
-    //     {data: {id: 'b'}},
-    //     {data: {id: 'c'}},
-    //     {data: {id: 'ab', source: 'a', target: 'b'}}
-    // ],
-    layout: {
-        name: 'grid',
-        rows: 1
-    },
-
-    style: cytoscape.stylesheet()
-        .selector('node')
-        .css({
-            'height': 80,
-            'width': 80,
-            'background-fit': 'cover',
-            'label': 'data(id)',
-            'shape': 'round-rectangle', //'barrel',
-            'border-color': '#8ce8ff',
-            'border-width': 3,
-            'border-opacity': 0.5,
-            // "color": "#fff",
-            "text-outline-color": "#888",
-            "text-outline-width": 3
+let to_load = (() => {
+    fetch("save/" + jsonFile.files[0].name, {mode: 'no-cors'})
+        .then(function (res) {
+            return res.json()
         })
-        .selector('edge')
-        .css({
-            'width': 3,
-            'line-color': '#ccc',
-            'target-arrow-shape': 'triangle',
-            'curve-style': 'bezier'
-        })
-        .selector('.to-be-linked')
-        .css({
-            "color": "red"
-            // 'border-color': '#ff0000',
-        })
-        .selector('.normal')
-        .css({
-            "color": "#ffffff"
-        }),
+        .then(function (data) {
+            console.log(data);
+            console.log("element", data.elements);
+            window.cy = cytoscape({
+                container: document.getElementById('cy'),
+                layout: data.layout,
+                elements: data.elements,
+                style: data.style,
+                pan: data.pan,
+                zoom: data.zoom,
+                minZoom: data.minZoom,
+                maxZoom: data.maxZoom,
+                render: data.render,
 
-
-    // style: fetch('cy-style.json').then(function(res){
-    //     return res.json();
-    // }),
-
-    // pan: {x: 10, y: 10},
-    wheelSensitivity: 0.3,
-    zoom: 10,
-    minZoom: 0.05,
-    maxZoom: 5,
-
+            });
+        });
 });
-cy.nodes().classes('normal')
+
+jsonFile.onchange = (() => {
+    console.log('jsonFile name :', jsonFile.files[0].name);
+    is_load = true;
+    to_load();
+    displayCy();
+    // cy.on('tap', addLink)
+});
+// Init :
+
+if (!is_load) {
+    window.cy  = cytoscape({
+        container: document.getElementById('cy'),// container to render in
+
+        // elements: [
+        //     {data: {id: 'a'}},
+        //     {data: {id: 'b'}},
+        //     {data: {id: 'c'}},
+        //     {data: {id: 'ab', source: 'a', target: 'b'}}
+        // ],
+        layout: {
+            name: 'grid',
+            rows: 1
+        },
+
+        style: cytoscape.stylesheet()
+            .selector('node')
+            .css({
+                'height': 80,
+                'width': 80,
+                'background-fit': 'cover',
+                'label': 'data(id)',
+                'shape': 'round-rectangle', //'barrel',
+                'border-color': '#8ce8ff',
+                'border-width': 3,
+                'border-opacity': 0.5,
+                // "color": "#fff",
+                "text-outline-color": "#888",
+                "text-outline-width": 3
+            })
+            .selector('edge')
+            .css({
+                'width': 3,
+                'line-color': '#ccc',
+                'target-arrow-shape': 'triangle',
+                'curve-style': 'bezier'
+            })
+            .selector('.to-be-linked')
+            .css({
+                "color": "red"
+                // 'border-color': '#ff0000',
+            })
+            .selector('.normal')
+            .css({
+                "color": "#ffffff"
+            }),
+
+
+        // style: fetch('cy-style.json').then(function(res){
+        //     return res.json();
+        // }),
+
+        // pan: {x: 10, y: 10},
+        wheelSensitivity: 0.3,
+        zoom: 10,
+        minZoom: 0.05,
+        maxZoom: 5,
+
+    });
+    cy.nodes().classes('normal')
+}
+
 
 function layoutRun(eles) {
     let layout = eles.layout({
@@ -83,7 +115,10 @@ function layoutRun(eles) {
 function addImag() {
     var slectedImgs = document.getElementsByClassName("selectedImg");
 
-    if (slectedImgs.length > 0) displayCy();     // TO Display the CY :
+    if (slectedImgs.length > 0) {
+        displayCy();     // TO Display the CY :
+        is_load = false;
+    }
 
     let last_node_nb = cy.nodes().length;
 
@@ -123,25 +158,26 @@ function addImag() {
     setTimeout(function () {
         cy.reset();
     }, 1000);
+
     // let mye = cy.getElementById('1');
     // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
 
 
 ////// Link The Nodes \\\\\\
-
+console.log("the enstent CY :",cy);
 let collectionToBeLinked = cy.collection();
 
 let addLink = ((evt) => {
     let evtTarget = evt.target;
     if (evtTarget === cy) {
-        // console.log("click en vide ");
+        console.log("click en vide ");
         collectionToBeLinked = cy.collection();
         resetAllClassName();
     } else {
         let evntTagGroup = getGroup(evtTarget[0]);
         if (isNodes(evntTagGroup)) {
-            // console.log("click sur node !");
+            console.log("click sur node !");
             collectionToBeLinked = collectionToBeLinked.union(evtTarget);
             switch (collectionToBeLinked.length) {
                 case 1 :

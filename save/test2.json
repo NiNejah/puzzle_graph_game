@@ -1,0 +1,350 @@
+{
+  "elements": {
+    "nodes": [
+      {
+        "data": {
+          "id": "1"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "2"
+        },
+        "position": {
+          "x": 87.86686947406497,
+          "y": -19.77004563166464
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "3"
+        },
+        "position": {
+          "x": 388.81089742273724,
+          "y": -70.2934955792519
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "4"
+        },
+        "position": {
+          "x": 175.7337389481298,
+          "y": 267.9939518958979
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "5"
+        },
+        "position": {
+          "x": 241.6338910536785,
+          "y": 96.65355642147135
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": true,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "6"
+        },
+        "position": {
+          "x": 54.916793421290585,
+          "y": 338.28744747514986
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "7"
+        },
+        "position": {
+          "x": 417.36763000180815,
+          "y": 142.78366289535546
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "8"
+        },
+        "position": {
+          "x": 544.7745907392025,
+          "y": 430.547660422918
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "9"
+        },
+        "position": {
+          "x": 667.7882080028933,
+          "y": 120.81694552683928
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      },
+      {
+        "data": {
+          "id": "10"
+        },
+        "position": {
+          "x": 245.86701543479327,
+          "y": 336.8178219574201
+        },
+        "group": "nodes",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": false,
+        "classes": "normal"
+      }
+    ],
+    "edges": [
+      {
+        "data": {
+          "id": "25",
+          "source": "2",
+          "target": "5"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "75",
+          "source": "7",
+          "target": "5"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      },
+      {
+        "data": {
+          "id": "35",
+          "source": "3",
+          "target": "5"
+        },
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "edges",
+        "removed": false,
+        "selected": false,
+        "selectable": true,
+        "locked": false,
+        "grabbable": true,
+        "pannable": true,
+        "classes": ""
+      }
+    ]
+  },
+  "style": [
+    {
+      "selector": "node",
+      "style": {
+        "height": "80px",
+        "width": "80px",
+        "background-fit": "cover",
+        "label": "data(id)",
+        "shape": "round-rectangle",
+        "border-color": "rgb(140,232,255)",
+        "border-width": "3px",
+        "border-opacity": "0.5",
+        "text-outline-color": "rgb(136,136,136)",
+        "text-outline-width": "3px"
+      }
+    },
+    {
+      "selector": "edge",
+      "style": {
+        "width": "3px",
+        "line-color": "rgb(204,204,204)",
+        "target-arrow-shape": "triangle",
+        "curve-style": "bezier"
+      }
+    },
+    {
+      "selector": ".to-be-linked",
+      "style": {
+        "color": "rgb(255,0,0)"
+      }
+    },
+    {
+      "selector": ".normal",
+      "style": {
+        "color": "rgb(255,255,255)"
+      }
+    },
+    {
+      "selector": "#1",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/_154952_gwadL.jpg)"
+      }
+    },
+    {
+      "selector": "#2",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/23iwmde%20(1).jpg)"
+      }
+    },
+    {
+      "selector": "#3",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/57044ad7a51da.jpg)"
+      }
+    },
+    {
+      "selector": "#4",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/Baghdad_map.svg.png)"
+      }
+    },
+    {
+      "selector": "#5",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/Lammasu.jpg)"
+      }
+    },
+    {
+      "selector": "#6",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/16681688_1155216801242504_7327477296852189429_n.jpg)"
+      }
+    },
+    {
+      "selector": "#7",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/3294289.jpg)"
+      }
+    },
+    {
+      "selector": "#8",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/above-the-clouds-184962_960_720.jpg)"
+      }
+    },
+    {
+      "selector": "#9",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/CarteIrak10.jpg)"
+      }
+    },
+    {
+      "selector": "#10",
+      "style": {
+        "background-image": "url(http://localhost:63342/docments_anciens_img/img_test1/Meshed_ali_usnavy_(PD).jpg)"
+      }
+    }
+  ],
+  "data": {},
+  "zoomingEnabled": true,
+  "userZoomingEnabled": true,
+  "zoom": 0.4549880601500487,
+  "minZoom": 0.05,
+  "maxZoom": 5,
+  "panningEnabled": true,
+  "userPanningEnabled": true,
+  "pan": {
+    "x": 138.12023040757475,
+    "y": 178.04686245284464
+  },
+  "boxSelectionEnabled": true,
+  "renderer": {
+    "name": "canvas"
+  },
+  "wheelSensitivity": 0.3
+}
