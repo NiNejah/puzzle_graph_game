@@ -1,17 +1,20 @@
 let is_load = false;
 let jsonFile = document.getElementById('jsonFile');
+let cy ;
 
 let to_load = (() => {
-    fetch("save/" + jsonFile.files[0].name, {mode: 'no-cors'})
+    fetch("save/" + jsonFile.files[0].name, {mode: 'cors'})
         .then(function (res) {
             return res.json()
         })
         .then(function (data) {
             console.log(data);
             console.log("element", data.elements);
-            window.cy = cytoscape({
+            cy.removeScratch();
+            cy = cytoscape({
                 container: document.getElementById('cy'),
                 layout: data.layout,
+                //TODO add the elements with cy.add
                 elements: data.elements,
                 style: data.style,
                 pan: data.pan,
@@ -21,6 +24,7 @@ let to_load = (() => {
                 render: data.render,
 
             });
+            layoutRun(cy.nodes());
         });
 });
 
@@ -29,14 +33,15 @@ jsonFile.onchange = (() => {
     is_load = true;
     to_load();
     displayCy();
-    // cy.on('tap', addLink)
+    console.log("load cy ",cy.nodes())
+    cy.on('tap', addLink)
 });
+
 // Init :
 
 if (!is_load) {
-    window.cy  = cytoscape({
+    cy  = cytoscape({
         container: document.getElementById('cy'),// container to render in
-
         // elements: [
         //     {data: {id: 'a'}},
         //     {data: {id: 'b'}},
@@ -60,8 +65,8 @@ if (!is_load) {
                 'border-width': 3,
                 'border-opacity': 0.5,
                 // "color": "#fff",
-                "text-outline-color": "#888",
-                "text-outline-width": 3
+                "text-outline-color": "#8ce8ff",
+                "text-outline-width": 2
             })
             .selector('edge')
             .css({
@@ -93,9 +98,14 @@ if (!is_load) {
 
     });
     cy.nodes().classes('normal')
+
+    // Listener :
+    cy.on('tap', addLink);
+    console.log("normal cy ",cy.nodes());
+
 }
 
-
+console.log("jeniral cy ",cy.nodes())
 function layoutRun(eles) {
     let layout = eles.layout({
         name: 'random',
@@ -153,7 +163,6 @@ function addImag() {
             last_node_nb++;
         }
         layoutRun(collection);
-
     }
     setTimeout(function () {
         cy.reset();
@@ -165,10 +174,11 @@ function addImag() {
 
 
 ////// Link The Nodes \\\\\\
-console.log("the enstent CY :",cy);
+// console.log("the enstent CY :",cy);
 let collectionToBeLinked = cy.collection();
 
-let addLink = ((evt) => {
+function addLink(evt) {
+    console.log("je suis dans add link");
     let evtTarget = evt.target;
     if (evtTarget === cy) {
         console.log("click en vide ");
@@ -213,11 +223,10 @@ let addLink = ((evt) => {
             resetAllClassName();
         }
     }
-});
+}
 
 
-// Listener :
-cy.on('tap', addLink)
+
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -328,6 +337,7 @@ function saveTextAsFile(data) {
 
 function displayCy() {
     document.getElementById("load-graph").style.display = "none";
+    document.getElementById("Workshop").style.position = "fixed";
     document.getElementById("new-graph").style.display = "block";
 }
 
