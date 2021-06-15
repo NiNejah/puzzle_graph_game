@@ -33,8 +33,8 @@
                 </div>
                 <div class="column">
                     <!--                        FOR TESTING-->
-                                            <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg" alt="my img">
-<!--                                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
+                    <!--                                            <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg" alt="my img">-->
+                    <!--                                        <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
                     <!--                    <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
                     <!--                    <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
                     <!--                    <img src="img_test1/Lammasu.jpg" class="myImg">-->
@@ -78,8 +78,7 @@
                 <button class="choices" onclick="openChoice(event,'Workshop')"><i class="fas fa-pencil-ruler"></i>
                     Workshop
                 </button>
-                <button class="choices" onclick="openChoice(event,'Help')"><i class="fas fa-help"></i>
-                    Help
+                <button class="choices" onclick="openChoice(event,'About')"><i class="fas fa-info"></i> About
                 </button>
             </div>
 
@@ -89,9 +88,14 @@
                 <div id="Workshop" class="choices-content">
 
                     <div id="load-graph">
-                        <input type="file" id="jsonFile" style="display:none" accept="application/JSON" >
+                        <input type="file" id="jsonFile" style="display:none" accept="application/JSON">
                         <p>You can add image to the workshop by select theme from "selected" category.</p>
-                        <p>Or you can <button class="load-graph-btn" onclick="document.getElementById('jsonFile').click()"> load a graph</button> from a JSON file .</p>
+                        <p>Or you can
+                            <button class="load-graph-btn" onclick="document.getElementById('jsonFile').click()"> load a
+                                graph
+                            </button>
+                            from a JSON file .
+                        </p>
                     </div>
 
                     <div id="new-graph">
@@ -121,6 +125,17 @@
                         <!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
                     </div>
 
+                </div>
+                <div id="About" class="choices-content">
+                    <h1>Interface web pour la manipulation d'images</h1>
+                    <h2>Introudction</h2>
+                    <p>This project is the one of my first internship in web developing, who I made it with LaBRI (<a
+                            href="https://www.labri.fr/en">Laboratoire Bordelais de Recherche en Informatique</a>),
+                        I use a graph library to manipulate the images </p>
+                    <h2>Tools</h2>
+                    <p>HTML5 , CSS , JavaScript and a fully featured graph theory library
+                        <a href="https://js.cytoscape.org/">Cytoscape.js</a>
+                    </p>
                 </div>
             </div>
         </div>
