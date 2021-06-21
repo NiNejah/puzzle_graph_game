@@ -130,11 +130,16 @@
 }
 
 
-/*@media screen and (min-width: 600px) {*/
-/*    .dashboard {*/
-/*        width: 250px;*/
-/*    }*/
-/*}*/
+@media screen and (max-width: 700px) {
+    .dashboard .board-tools {
+        width: 50px;
+        text-align: center;
+        justify-items: left;
+    }
+    .menu button {
+        width: 100%;
+    }
+}
 /*@media screen and (max-width: 600px) {*/
 
 /*    .dashboard {*/
