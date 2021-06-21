@@ -1,9 +1,10 @@
 * {
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif ;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 /* # The Main Menu */
-.menu{
+.menu {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -20,7 +21,7 @@
     font-size: 16px;
 }
 
-.menu button:hover{
+.menu button:hover {
     background-color: #ddd;
 }
 
@@ -32,7 +33,7 @@
     position: relative;
     padding: 6px 12px;
     border: 1px solid #ccc;
-    border-top:none ;
+    border-top: none;
     display: none;
 }
 
@@ -51,7 +52,7 @@
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
 
-.dashboard a{
+.dashboard a {
     font-size: 20px;
     margin-left: 20px;
     color: #dddddd;
@@ -59,7 +60,7 @@
 }
 
 /* ********** Dashboard Tools ********** */
-.board-tools{
+.board-tools {
     overflow: hidden;
     position: fixed;
     display: none;
@@ -72,20 +73,23 @@
     color: #818181;
 }
 
-.dashboard .addbtn:hover{
-  color: #24c19a;
+.dashboard .addbtn:hover {
+    color: #24c19a;
 }
-.dashboard .selectAllbtn:hover{
+
+.dashboard .selectAllbtn:hover {
     color: #e2bc29;
 }
-.dashboard .deselectAllbtn:hover{
+
+.dashboard .deselectAllbtn:hover {
     color: #99c718;
 }
-.dashboard .closebtn:hover{
+
+.dashboard .closebtn:hover {
     color: #ff003b;
 }
 
-.no-img-info{
+.no-img-info {
     color: rgba(198, 198, 198, 0.86);
     font-size: 16px;
     padding: 2px;
@@ -101,6 +105,7 @@
     padding: 2px;
     padding-top: 50px;
 }
+
 .img-row .column {
     flex: 20%;
     padding: 2px;
@@ -112,6 +117,7 @@
     border: 2px solid #cccccc;
     cursor: pointer;
 }
+
 .img-row .column .selectedImg {
     width: 98%;
     box-shadow: 0 0 2px 1px #77ff00;
@@ -130,17 +136,29 @@
 }
 
 @media screen and (max-width: 700px) {
-        .dashboard .board-tools {
-            width:50px;
-            text-align: center;
-            justify-items: left ;
-        }
-        .img-row{
-            margin-top: 90px;
-        }
-        .menu button{
-            width: 100%;
-        }
+    /*.dashboard {*/
+    /*    width: 100px;*/
+    /*    padding-top: 15px;*/
+    /*}*/
+
+    .dashboard .board-tools {
+        width: 50px;
+        text-align: center;
+        justify-items: left;
+    }
+
+    /*.img-row {*/
+    /*    margin-top: 90px;*/
+    /*    display: block;*/
+    /*}*/
+    /*.column img {*/
+    /*    float: none;*/
+    /*    width: 100%;*/
+    /*}*/
+
+    .menu button {
+        width: 100%;
+    }
 }
 
 /*@media screen and (min-width: 600px) {*/
@@ -176,19 +194,20 @@
 
 /********************************* the end of sidebar *********************************/
 
-#Workshop{
+#Workshop {
     width: 100%;
     height: 85%;
     /*position: fixed;*/
 }
 
-#load-graph{
+#load-graph {
     text-align: center;
     font-size: 32px;
     position: relative;
 
 }
-.load-graph-btn{
+
+.load-graph-btn {
     text-decoration: none;
     border: none;
     background-color: #24c19a;
@@ -198,19 +217,20 @@
     cursor: pointer;
     color: #ffffff;
 }
-.load-graph-btn:hover{
+
+.load-graph-btn:hover {
     /*opacity: 0.7;*/
     color: #24c19a;
     background-color: #ffffff;
 }
 
-#new-graph{
+#new-graph {
     width: 100%;
     height: 100%;
     display: none;
 }
 
-#cy{
+#cy {
     overflow: hidden;
     width: 100%;
     height: 100%;
@@ -223,11 +243,11 @@
 
 /********* SAVING... ******/
 
-.saving{
+.saving {
     text-align: center;
 }
 
-.open-save{
+.open-save {
     margin: 10px;
     font-size: 20px;
     color: #ffe4e4;
@@ -238,11 +258,11 @@
     cursor: pointer;
 }
 
-.open-save:hover{
+.open-save:hover {
     background-color: #e81a33;
 }
 
-.save-list{
+.save-list {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -251,8 +271,8 @@
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
     /*padding-top: 20%;*/
 }
 
@@ -264,7 +284,7 @@
     border-radius: 5px;
 }
 
-.saving-titel{
+.saving-titel {
     color: #dddddd;
     float: left;
     padding: 10px 15px;
@@ -279,11 +299,12 @@
     font-weight: bold;
 }
 
-.close:hover{
+.close:hover {
     color: red;
-    cursor:pointer;
+    cursor: pointer;
 }
-input{
+
+input {
     font-size: 20px;
     width: 90%;
     padding: 10px 15px;
@@ -293,7 +314,7 @@ input{
     box-sizing: border-box;
 }
 
-.save-ele button{
+.save-ele button {
     padding: 2px;
     margin-bottom: 10px;
     margin-right: 6px;
@@ -304,6 +325,7 @@ input{
     border-radius: 2px;
     cursor: pointer;
 }
-.save-ele button:hover{
+
+.save-ele button:hover {
     background-color: rgba(255, 255, 255, 0.92);
 }
