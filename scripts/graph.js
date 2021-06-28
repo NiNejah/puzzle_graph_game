@@ -1,16 +1,16 @@
 let is_load = false;
 let jsonFile = document.getElementById('jsonFile');
-let cy ;
+let cy=null;
 
 let to_load = (() => {
     fetch("save/" + jsonFile.files[0].name, {mode: 'cors'})
         .then(function (res) {
             return res.json()
         })
-        .then(function (data) {
+        .then(function (data){
             console.log(data);
             console.log("element", data.elements);
-            cy.removeScratch();
+            if (cy) cy.destroy();
             cy = cytoscape({
                 container: document.getElementById('cy'),
                 layout: data.layout,
