@@ -19,6 +19,16 @@ file.onchange = (() => {
     }
 });
 
+function open43(){
+    fetch("./jigs/4*3")
+        .then(response => response.arrayBuffer())
+        .then(ab => {
+            console.log(ab)
+            // do stuff with `ArrayBuffer` representation of file
+        })
+        .catch(err => console.log(err));
+
+}
 // to find the column that contains the minimum number of images
 function minParent(parentNode) {
     let arry = [];

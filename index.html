@@ -66,13 +66,9 @@
 
             <div class="menu">
                 <div class="choices" id="ch-download">
-                    <label for="files">
-                        <input type="file" name="files" id="myfiles" style="display:none" webkitdirectory=""
-                               directory="">
-                        <button id="filebtn" onclick="document.getElementById('myfiles').click()"><i
-                                class="fas fa-download fa-2X"></i> Open new file
+                        <button id="filebtn" onclick="openGameList()">
+                            <i class="fas fa-puzzle-piece"></i> Play a New Game
                         </button>
-                    </label>
                 </div>
                 <button class="choices" onclick="openNav()"><i class="fas fa-check"></i> Selected</button>
                 <button class="choices" onclick="openChoice(event,'Workshop')"><i class="fas fa-pencil-ruler"></i>
@@ -85,6 +81,22 @@
 
 
             <div class="content">
+<!--                TO choose a game -->
+                <div id="gameList" class="list">
+                    <div class="list-ele">
+                        <span class="close" onclick="closeGameList()">&times;</span>
+                        <h2 class="choose-game">choose a Game </h2>
+
+                        <div class="allGameBtn">
+
+                            <button class="gamebtn" onclick="open43()"> 4*3 </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
                 <!--                choices-content-->
                 <div id="Workshop" class="choices-content">
 
@@ -92,9 +104,9 @@
 
                     <div class="saving" onmouseleave="">
 
-                        <div id="saveList" class="save-list" >
+                        <div id="saveList" class="list" >
 
-                            <div class="save-ele">
+                            <div class="list-ele">
                                 <span class="close" onclick="closeSaveList()">&times;</span>
                                 <h2 class="saving-titel"> SAVING </h2>
                                 <input type="text" id="FileName" name="fname" placeholder="file name"><br>

@@ -54,3 +54,15 @@ function closeSaveList(){
     let l = document.getElementById("saveList");
     l.style.display ="none";
 }
+
+function openGameList(){
+    console.log("opening Game list .. ");
+    let l = document.getElementById("gameList");
+    l.style.display ="block";
+}
+
+function closeGameList(){
+    console.log("closing save list .. ");
+    let l = document.getElementById("gameList");
+    l.style.display ="none";
+}

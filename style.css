@@ -212,8 +212,8 @@
     background-color: #1a925f;
 }
 
-.save-list{
-    display: none; /* Hidden by default */
+.list{
+    display: block; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -226,8 +226,8 @@
     /*padding-top: 20%;*/
 }
 
-.save-ele {
-    background-color: rgba(83, 77, 77, 0.73);
+.list-ele {
+    background-color: rgba(69, 69, 69, 0.73);
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 30%; /* Could be more or less, depending on screen size */
@@ -276,4 +276,19 @@ input{
 }
 .save-ele button:hover{
     background-color: rgba(255, 255, 255, 0.92);
+}
+
+/*choose a Game*/
+.choose-game {
+    padding: 5px 15px;
+    color: #dddddd;
+}
+.allGameBtn {
+    text-align: center;
+}
+.gamebtn{
+    font-size: 16px;
+    padding: 2px;
+    width: 90%;
+    margin-bottom: 8px;
 }
