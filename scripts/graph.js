@@ -1,3 +1,4 @@
+
 // Init :
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
@@ -75,47 +76,46 @@ function layoutRun(eles) {
 //# Insert :
 
 ////// Add Images In The Canvas \\\\\\
-function addImag() {
-    var slectedImgs = document.getElementsByClassName("selectedImg");
-    let last_node_nb = cy.nodes().length;
-    // to renduring juste the new elemants :
-    let collection = cy.collection();
-    for (let i = 0; i < slectedImgs.length; i++) {
-        //console.log("src : ", slectedImgs[i]);
-        let e = last_node_nb + 1;
-        let imgUrl = 'url(' + slectedImgs[i].src + ')';
-        if (alreadyIn(imgUrl)) {
-            alertMessage(slectedImgs[i].src);
-        } else {
-            let ele = cy.add({
-                group: 'nodes',
-                data: {id: e},
-                // position: {x: 300, y: 200}
-            });
-            ele.addClass("normal");
-            cy.style()
-                .selector('#' + String(e))
-                .style({
-                    'background-image': imgUrl
-                })
-                .update()
-            ;
-            collection = collection.union(ele);
-            last_node_nb++;
-        }
-        layoutRun(collection);
-
+function addImgGame(url,eId){
+    let ele = cy.add({
+        group: 'nodes',
+        data: {id: eId},
+        // position: {x: 300, y: 200}
+    });
+    ele.addClass("normal");
+    cy.style()
+        .selector('#' + String(eId))
+        .style({
+            'background-image': url
+        })
+        .update()
+}
+function open43(){
+    let game_4_3 =[
+        "4*3/1.png",
+        "4*3/2.png",
+        "4*3/3.png",
+        "4*3/4.png",
+        "4*3/5.png",
+        "4*3/6.png",
+        "4*3/7.png",
+        "4*3/8.png",
+        "4*3/9.png",
+        "4*3/10.png",
+        "4*3/11.png",
+        "4*3/12.png"
+    ]
+    for (let i = 0 ; i<game_4_3.length;i++){
+        let url = 'url(./jigs/'+game_4_3[i]+')' ;
+        addImgGame(url,i+1);
     }
-    setTimeout(function () {
+        setTimeout(function () {
         cy.reset();
     }, 1000);
-    // let mye = cy.getElementById('1');
-    // console.log("the elemeent :", mye._private.style["background-image"].strValue);
 }
 
 
 ////// Link The Nodes \\\\\\
-
 let collectionToBeLinked = cy.collection();
 
 let addLink = ((evt) => {
@@ -171,21 +171,6 @@ cy.on('tap', addLink)
 /////////////////////////////////////////////////////////////////////////////////
 /////////////////////////// Verification Functions  ////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function alertMessage(src) {
-    alert(src + "\nalready in the workshop");
-}
-
-function alreadyIn(url) {
-    let isItIn = false;
-    cy.nodes().forEach((e) => {
-        if (getBackgroundUrl(e) === url) {
-            // console.log("alreadyIn : e = ", e._private.style["background-image"].strValue,"et url =", url);
-            isItIn = true;
-        }
-    });
-    return isItIn;
-}
 
 function alreadyLinked(edgId) {
     let isLinked = false;
