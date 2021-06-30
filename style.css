@@ -28,100 +28,11 @@
 }
 
 .choices-content {
-    /*display: none;*/
+    display: block;
     position: relative;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top:none ;
-    display: none;
-}
-
-/********************************* sidebar *********************************/
-
-.dashboard {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0;
-    left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 10px; /* Place content 20px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
-}
-
-.dashboard a{
-    font-size: 20px;
-    margin-left: 20px;
-    color: #dddddd;
-    cursor: pointer;
-}
-
-/* ********** Dashboard Tools ********** */
-.board-tools{
-    overflow: hidden;
-    position: fixed;
-    display: none;
-    width: 200px;
-    background-color: rgba(59, 56, 56, 0.73);
-    padding: 5px;
-    margin: 10px;
-    border-radius: 20px;
-    transition: 0.7s;
-    color: #818181;
-}
-
-.dashboard .addbtn:hover{
-  color: #24c19a;
-}
-.dashboard .selectAllbtn:hover{
-    color: #e2bc29;
-}
-.dashboard .deselectAllbtn:hover{
-    color: #99c718;
-}
-.dashboard .closebtn:hover{
-    color: #ff003b;
-}
-
-.no-img-info{
-    color: rgba(198, 198, 198, 0.86);
-    font-size: 16px;
-    padding: 2px;
-    margin: 2px;
-    font-family: Monospace;
-    text-align: center;
-}
-
-/* IMG */
-.img-row {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 2px;
-    padding-top: 50px;
-}
-.img-row .column {
-    flex: 20%;
-    padding: 2px;
-    /*cursor: pointer;*/
-}
-
-.img-row .column .myImg {
-    width: 95%;
-    border: 2px solid #cccccc;
-    cursor: pointer;
-}
-.img-row .column .selectedImg {
-    width: 98%;
-    box-shadow: 0 0 2px 1px #77ff00;
-    border: 2px solid #cccccc;
-    cursor: pointer;
-}
-
-.img-row .column img:hover {
-    width: 98%;
-    /*opacity: 0.8;*/
 }
 
 #main {
@@ -213,7 +124,7 @@
 }
 
 .list{
-    display: block; /* Hidden by default */
+    display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
@@ -291,4 +202,8 @@ input{
     padding: 2px;
     width: 90%;
     margin-bottom: 8px;
+}
+
+#About{
+    display: none;
 }

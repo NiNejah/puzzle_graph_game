@@ -15,73 +15,23 @@
 <body>
 <main>
     <div class="all">
-        <!-- image : -->
-        <div id="mySidebar" class="dashboard">
-
-            <div class="board-tools" id="btools">
-                <a class="addbtn" onclick="addImag()" title="add to the workshop"><i class="fas fa-plus-circle"></i></a>
-                <a class="selectAllbtn" onclick="selectAll()" title="select all"><i class="fas fa-border-all"></i></a>
-                <a class="deselectAllbtn" onclick="deselectAll()" title="deselect all"><i
-                        class="fas fa-object-group"></i></a>
-                <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close"><i
-                        class="fas fa-times-circle"></i></a>
-            </div>
-
-            <div class="img-row" onclick="on_select()">
-                <div class="no-img-info" id="info">There's no image to display please upload a file by clicking on "open
-                    new file"
-                </div>
-                <div class="column">
-                    <!--                        FOR TESTING-->
-                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg" alt="my img">-->
-                    <!--                    <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/Lammasu.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/Lammasu.jpg" class="myImg">-->
-                </div>
-                <div class="column">
-                    <!--                        <img src="img_test2/chat2.png" class="selectedImg">-->
-                    <!--                         FOR TESTING -->
-                    <!--                        <img src="img_test1/CarteIrak10.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">-->
-                    <!--                        <img src="img_test1/3294289.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/CarteIrak10.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">-->
-                    <!--                        <img src="img_test1/3294289.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">-->
-                </div>
-            </div>
-
-        </div>
 
         <div id="main" class="menu-body">
 
             <div class="menu">
                 <div class="choices" id="ch-download">
-                        <button id="filebtn" onclick="openGameList()">
-                            <i class="fas fa-puzzle-piece"></i> Play a New Game
-                        </button>
+                    <button id="filebtn" onclick="openGameList()">
+                        <i class="fas fa-puzzle-piece"></i> Play a New Game
+                    </button>
                 </div>
-                <button class="choices" onclick="openNav()"><i class="fas fa-check"></i> Selected</button>
-                <button class="choices" onclick="openChoice(event,'Workshop')"><i class="fas fa-pencil-ruler"></i>
-                    Workshop
-                </button>
-                <button class="choices" onclick="openChoice(event,'About')"><i class="fas fa-info"></i>
+                <button class="choices" onclick="openAboutList()"><i class="fas fa-info"></i>
                     About
                 </button>
             </div>
 
 
             <div class="content">
-<!--                TO choose a game -->
+                <!--                TO choose a game -->
                 <div id="gameList" class="list">
                     <div class="list-ele">
                         <span class="close" onclick="closeGameList()">&times;</span>
@@ -89,53 +39,61 @@
 
                         <div class="allGameBtn">
 
-                            <button class="gamebtn" onclick="open43()"> 4*3 </button>
+                            <button class="gamebtn" onclick="open43()"> 4*3</button>
 
                         </div>
 
                     </div>
-
                 </div>
 
                 <!--                choices-content-->
-                <div id="Workshop" class="choices-content">
+                <div id="Workshop" class="choices-content active">
 
                     <div id="cy"></div>
 
                     <div class="saving" onmouseleave="">
 
-                        <div id="saveList" class="list" >
+                        <div id="saveList" class="list">
 
                             <div class="list-ele">
                                 <span class="close" onclick="closeSaveList()">&times;</span>
                                 <h2 class="saving-titel"> SAVING </h2>
                                 <input type="text" id="FileName" name="fname" placeholder="file name"><br>
-                                <button class="save-img" onclick="saveAsImg(true)">.jpg </button>
-                                <button class="save-img" onclick="saveAsImg(false)">.png </button>
+                                <button class="save-img" onclick="saveAsImg(true)">.jpg</button>
+                                <button class="save-img" onclick="saveAsImg(false)">.png</button>
                                 <!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
-                                <button class="save-json" onclick="saveAsJson()">.JSON </button>
+                                <button class="save-json" onclick="saveAsJson()">.JSON</button>
                                 <br>
                             </div>
                         </div>
 
-                        <button class="open-save" onclick="openSaveList()" title="saving"><i class="fas fa-save"></i></button>
+                        <button class="open-save" onclick="openSaveList()" title="saving"><i class="fas fa-save"></i>
+                        </button>
 
                     </div>
 
                     <!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
                 </div>
             </div>
-            <div id="About" class="choices-content">
-                <h1>Interface web pour la manipulation d'images</h1>
-                <h2>Introudction</h2>
-                <p>This project is the one of my first internship in web developing, who I made it with LaBRI (<a
-                        href="https://www.labri.fr/en">Laboratoire Bordelais de Recherche en Informatique</a>),
-                    I use a graph library to manipulate the images </p>
-                <h2>Tools</h2>
-                <p>HTML5 , CSS , JavaScript and a fully featured graph theory library
-                    <a href="https://js.cytoscape.org/">Cytoscape.js</a>
-                </p>
+
+            <div id="aboutList" class="list">
+                <div class="list-ele">
+                    <span class="close" onclick="closeAboutList()">&times;</span>
+                    <h2 class="saving-titel"> About </h2>
+                    <h1>Interface web pour la manipulation d'images</h1>
+                    <h2>Introudction</h2>
+                    <p>This project is the one of my first internship in web developing, who I made it with LaBRI (<a
+                            href="https://www.labri.fr/en">Laboratoire Bordelais de Recherche en Informatique</a>),
+                        I use a graph library to manipulate the images </p>
+                    <h2>Tools</h2>
+                    <p>HTML5 , CSS , JavaScript and a fully featured graph theory library
+                        <a href="https://js.cytoscape.org/">Cytoscape.js</a>
+                    </p>
+
+                </div>
+
             </div>
+
         </div>
 
 

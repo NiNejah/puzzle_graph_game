@@ -1,4 +1,3 @@
-
 // Init :
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
@@ -25,9 +24,9 @@ let cy = cytoscape({
             'border-color': '#8ce8ff',
             'border-width': 3,
             'border-opacity': 0.5,
-            // "color": "#fff",
+            "color": "#ffffff",
             "text-outline-color": "#888",
-            "text-outline-width": 3
+            "text-outline-width": 2
         })
         .selector('edge')
         .css({
@@ -76,7 +75,7 @@ function layoutRun(eles) {
 //# Insert :
 
 ////// Add Images In The Canvas \\\\\\
-function addImgGame(url,eId){
+function addImgGame(url, eId) {
     let ele = cy.add({
         group: 'nodes',
         data: {id: eId},
@@ -90,8 +89,9 @@ function addImgGame(url,eId){
         })
         .update()
 }
-function open43(){
-    let game_4_3 =[
+
+function open43() {
+    let game_4_3 = [
         "4*3/1.png",
         "4*3/2.png",
         "4*3/3.png",
@@ -105,13 +105,13 @@ function open43(){
         "4*3/11.png",
         "4*3/12.png"
     ]
-    for (let i = 0 ; i<game_4_3.length;i++){
-        let url = 'url(./jigs/'+game_4_3[i]+')' ;
-        addImgGame(url,i+1);
+    closeGameList();
+
+    for (let i = 0; i < game_4_3.length; i++) {
+        let url = 'url(./jigs/' + game_4_3[i] + ')';
+        addImgGame(url, i + 1);
     }
-        setTimeout(function () {
-        cy.reset();
-    }, 1000);
+    layoutRun(cy.nodes())
 }
 
 
@@ -139,10 +139,10 @@ let addLink = ((evt) => {
                 case 2:
                     let from = getId(collectionToBeLinked[0]);
                     let to = getId(collectionToBeLinked[1]);
-                    if (!alreadyLinked(from + to)) {
+                    if (!alreadyLinked(from + '_' + to)) {
                         let edg = cy.add({
                             group: 'edges',
-                            data: {id: from + to, source: from, target: to}
+                            data: {id: from + '_' + to, source: from, target: to}
                         });
                     } else {
                         console.log("already Linked !");
@@ -249,7 +249,7 @@ function saveTextAsFile(data) {
     var textFileAsBlob = new Blob([textToWrite], {type: 'text/plain'});
     var fileNameToSaveAs = document.getElementById("FileName").value;
     var downloadLink = document.createElement("a");
-    downloadLink.download = fileNameToSaveAs +'.json';
+    downloadLink.download = fileNameToSaveAs + '.json';
     downloadLink.innerHTML = "Download File";
     downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
     downloadLink.click();
@@ -270,5 +270,49 @@ function saveTextAsFile(data) {
 }
 
 
+// Puzzel functions :
+// Verification
+// Important (id) is integer !
+function isCorner(id, nbColon, nbRow) {
+    return id === 1 || id === nbColon || id === nbRow || id === (nbRow * nbColon);
+}
 
+function isLeftBorder(id, nbColon) {
+    return id % nbColon === 1;
+}
 
+function isRightBorder(id, nbColon) {
+    return id % nbColon === 0;
+}
+
+function isTobBorder(id, nbColon) {
+    return id > 1 && id < nbColon;
+}
+
+function isBottomBorder(id, nbColon, nbRow) {
+    return id > (nbRow * (nbColon - 1)) + 1 && id < nbRow * nbColon;
+}
+
+function isBorder(id, nbColon, nbRow) {
+    return (
+        isCorner(id, nbColon, nbRow) ||
+        isLeftBorder(id, nbColon) ||
+        isRightBorder(id, nbColon) ||
+        isTobBorder(id, nbColon) ||
+        isBottomBorder(id, nbColon, nbRow));
+}
+
+function isInternalCells(id, nbColon, nbRow) {
+    return !isBorder(id, nbColon, nbRow);
+}
+
+function isConnected(id1, id2) {
+    return (
+        alreadyLinked(id1 + '_' + id2) ||
+        alreadyLinked(id2 + '_' + id1));
+}
+
+function haveMaxConnects(id){
+    // important
+    nodes.connectedEdges()
+}
