@@ -1,4 +1,6 @@
 // Init :
+import {isCorner,isBorder,borderTest,cornersTests,isInternalCells,internalTest,isConnected} from "./puzzle";
+
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
 
@@ -19,11 +21,12 @@ let cy = cytoscape({
             'height': 80,
             'width': 80,
             'background-fit': 'cover',
+            'background-color': '#ffffff',
             'label': 'data(id)',
             'shape': 'round-rectangle', //'barrel',
-            'border-color': '#8ce8ff',
-            'border-width': 3,
-            'border-opacity': 0.5,
+            // 'border-color': '#8ce8ff',
+            // 'border-width': 3,
+            // 'border-opacity': 0.5,
             "color": "#ffffff",
             "text-outline-color": "#888",
             "text-outline-width": 2
@@ -88,6 +91,7 @@ function addImgGame(url, eId) {
             'background-image': url
         })
         .update()
+
 }
 
 function open43() {
@@ -106,7 +110,6 @@ function open43() {
         "4*3/12.png"
     ]
     closeGameList();
-
     for (let i = 0; i < game_4_3.length; i++) {
         let url = 'url(./jigs/' + game_4_3[i] + ')';
         addImgGame(url, i + 1);
@@ -121,14 +124,15 @@ let collectionToBeLinked = cy.collection();
 let addLink = ((evt) => {
     let evtTarget = evt.target;
     if (evtTarget === cy) {
-        console.log("click en vide ");
+        // console.log("click en vide ");
         collectionToBeLinked = cy.collection();
         resetAllClassName();
     } else {
         let evntTagGroup = getGroup(evtTarget[0]);
         if (isNodes(evntTagGroup)) {
-            console.log("click sur node !");
+            // console.log("click sur node !");
             collectionToBeLinked = collectionToBeLinked.union(evtTarget);
+            // console.log("en 0","collectionToBeLinked , length",collectionToBeLinked,collectionToBeLinked.length);
             switch (collectionToBeLinked.length) {
                 case 1 :
                     let eId = getId(evtTarget[0]);
@@ -139,15 +143,17 @@ let addLink = ((evt) => {
                 case 2:
                     let from = getId(collectionToBeLinked[0]);
                     let to = getId(collectionToBeLinked[1]);
-                    if (!alreadyLinked(from + '_' + to)) {
+                    if (!isConnected(from, to)) {
                         let edg = cy.add({
                             group: 'edges',
                             data: {id: from + '_' + to, source: from, target: to}
                         });
                     } else {
+                        window.alert("already Linked !");
                         console.log("already Linked !");
                     }
                     collectionToBeLinked = cy.collection();
+                    // console.log("en2","collectionToBeLinked , length",collectionToBeLinked,collectionToBeLinked.length);
                     resetAllClassName();
                     break;
                 default:
@@ -161,6 +167,7 @@ let addLink = ((evt) => {
             resetAllClassName();
         }
     }
+    haveMaxConnects(String(1));
 });
 
 
@@ -270,49 +277,15 @@ function saveTextAsFile(data) {
 }
 
 
-// Puzzel functions :
-// Verification
-// Important (id) is integer !
-function isCorner(id, nbColon, nbRow) {
-    return id === 1 || id === nbColon || id === nbRow || id === (nbRow * nbColon);
-}
 
-function isLeftBorder(id, nbColon) {
-    return id % nbColon === 1;
-}
 
-function isRightBorder(id, nbColon) {
-    return id % nbColon === 0;
-}
-
-function isTobBorder(id, nbColon) {
-    return id > 1 && id < nbColon;
-}
-
-function isBottomBorder(id, nbColon, nbRow) {
-    return id > (nbRow * (nbColon - 1)) + 1 && id < nbRow * nbColon;
-}
-
-function isBorder(id, nbColon, nbRow) {
-    return (
-        isCorner(id, nbColon, nbRow) ||
-        isLeftBorder(id, nbColon) ||
-        isRightBorder(id, nbColon) ||
-        isTobBorder(id, nbColon) ||
-        isBottomBorder(id, nbColon, nbRow));
-}
-
-function isInternalCells(id, nbColon, nbRow) {
-    return !isBorder(id, nbColon, nbRow);
-}
-
-function isConnected(id1, id2) {
-    return (
-        alreadyLinked(id1 + '_' + id2) ||
-        alreadyLinked(id2 + '_' + id1));
-}
-
-function haveMaxConnects(id){
-    // important
-    nodes.connectedEdges()
+//*********************************** Puzzle Function :
+function hasGoodLink(id, nbColon, nbRow) {
+    if (id < 1 || id > nbColon * nbRow || nbRow < 2) console.log("invalid id arg in hasGoodLink function !");
+    let myE = cy.$('#' + String(id));
+    let elesConnectedTo = myE.connectedEdges();
+    let nbLinks = elesConnectedTo.length;
+    if (isCorner(id, nbColon, nbRow)) return cornersTests(id, nbColon, nbRow, nbLinks);
+    if (isBorder(id, nbColon, nbRow)) return borderTest(id, nbColon, nbRow, nbLinks);
+    if(isInternalCells(id, nbColon, nbRow)) return internalTest(id, nbColon, nbRow, nbLinks);
 }
