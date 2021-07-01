@@ -1,6 +1,5 @@
 {
   "dependencies": {
     "cytoscape-dblclick": "^0.3.1"
-  },
-  "type": "Puzzle"
+  }
 }
