@@ -1,3 +1,6 @@
+let nbColons =null ;
+let nbRows = null ;
+
 // Init :
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
@@ -112,6 +115,8 @@ function open43() {
         addImgGame(url, i + 1);
     }
     layoutRun(cy.nodes())
+    nbColons = 4 ;
+    nbRows = 3 ;
 }
 
 
@@ -164,6 +169,9 @@ let addLink = ((evt) => {
             resetAllClassName();
         }
     }
+    if (gameOver(nbColons,nbRows)) {
+        alert("you winnnnnnnn !");
+    };
 });
 
 
@@ -225,7 +233,7 @@ function resetAllClassName() {
 }
 
 /////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////// Export Functions  /////////////////////////////////
+/////////////////////////////// Export Functions  //////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 function saveAsImg(isJpg) {
@@ -273,9 +281,9 @@ function saveTextAsFile(data) {
 }
 
 
-
-
+//***************************************************************************************\\
 //*********************************** Puzzle Function ***********************************\\
+//***************************************************************************************\\
 
 function hasGoodLink(id, nbColon, nbRow) {
     if (id < 1 || id > nbColon * nbRow || nbRow < 2) console.log("invalid id arg in hasGoodLink function !");
@@ -284,16 +292,24 @@ function hasGoodLink(id, nbColon, nbRow) {
     let nbLinks = elesConnectedTo.length;
     if (isCorner(id, nbColon, nbRow)) return cornersTests(id, nbColon, nbRow, nbLinks);
     if (isBorder(id, nbColon, nbRow)) return borderTest(id, nbColon, nbRow, nbLinks);
-    if(isInternalCells(id, nbColon, nbRow)) return internalTest(id, nbColon, nbRow, nbLinks);
+    if (isInternalCells(id, nbColon, nbRow)) return internalTest(id, nbColon, nbRow, nbLinks);
 }
 
 function gameOver(nbColon, nbRow) {
+    console.log("nbR ",nbRow,"nbC ",nbColon);
+    if (nbColon === null || nbRow === null) return false ;
+    console.log("je suis dans game is over ");
 
+    let gameOver = true;
+    cy.nodes().forEach((e) => {
+        if (!hasGoodLink(parseInt(getId(e[0])), nbColon, nbRow)) gameOver = false;
+    });
+    if (gameOver) console.log("c'est fini il est Ganger !!!!!!!!!!!!!!!!! ");
+    return gameOver ;
 }
 
 
-
-///////////////////// PUZZLE.js \\\\\\\\\\\\\\\\\\\\\\
+//*********************************** PUZZLE.js ***********************************\\
 
 // Verification type Abstract
 // Important (id) is integer !
@@ -301,7 +317,7 @@ function gameOver(nbColon, nbRow) {
 
 function isCorner(id, nbColon, nbRow) {
     if (id < 1 || id > nbColon * nbRow) console.log("invalid id arg in isCorner function !");
-    return id === 1 || id === nbColon || id === (nbRow * (nbColon - 1)) + 1 || id === (nbRow * nbColon);
+    return id === 1 || id === nbColon || id === ( nbColon * (nbRow - 1)) + 1 || id === (nbRow * nbColon);
 }
 
 function isLeftBorder(id, nbColon) {
@@ -321,11 +337,15 @@ function isTobBorder(id, nbColon) {
 
 function isBottomBorder(id, nbColon, nbRow) {
     if (id < 1 || id > nbColon * nbRow) console.log("invalid id arg in isBottomBorder function !");
-    return id > (nbRow * (nbColon - 1)) + 1 && id < nbRow * nbColon;
+    return id > ((nbColon * (nbRow - 1)) + 1) && id < nbRow * nbColon;
 }
 
 function isBorder(id, nbColon, nbRow) {
     if (id < 1 || id > nbColon * nbRow) console.log("invalid id arg in isBorder function !");
+        // console.log("border left: ",isLeftBorder(id, nbColon))
+        // console.log("border right : ",isRightBorder(id, nbColon))
+        // console.log("border top: ",isTobBorder(id, nbColon))
+        // console.log("border bottom : ",isBottomBorder(id, nbColon, nbRow))
     return (
         isLeftBorder(id, nbColon) ||
         isRightBorder(id, nbColon) ||
@@ -346,20 +366,24 @@ function isConnected(id1, id2) {
 }
 
 
-
 /// TESTS :
 
 function cornersTests(id, nbColon, nbRow, nbLinks) {
+    console.log("je suis dans cornersTests le -ID- = (",id,")")
     // test if the element has not enough, or to many links :
     if (nbLinks !== 2) return false;
     switch (id) {
         case 1:
+            console.log("c'est conecter ? ", isConnected(id, 2) && isConnected(id, (nbColon + 1)) )
             return isConnected(id, 2) && isConnected(id, (nbColon + 1));
         case nbColon:
+            console.log("c'est conecter ? ",isConnected(id, (id - 1)) && isConnected(id, (id + nbColon)))
             return isConnected(id, (id - 1)) && isConnected(id, (id + nbColon));
-        case (nbRow * (nbColon - 1)) + 1:
+        case (nbColon * (nbRow - 1)) + 1:
+            console.log("c'est conecter ? ", isConnected(id, (id - nbColon)) && isConnected(id, (id + 1)))
             return isConnected(id, (id - nbColon)) && isConnected(id, (id + 1));
         case nbRow * nbColon:
+            console.log("c'est conecter ? ",isConnected(id, (id - nbColon)) && isConnected(id, (id - 1)))
             return isConnected(id, (id - nbColon)) && isConnected(id, (id - 1));
         default:
             console.log("switch finished with default in cornerTests fun ");
@@ -370,9 +394,14 @@ function cornersTests(id, nbColon, nbRow, nbLinks) {
 }
 
 function borderTest(id, nbColon, nbRow, nbLinks) {
+    console.log("je suis dans borderTest le -ID- = (",id,")")
     if (nbLinks !== 3) return false;
-
     if (isTobBorder(id, nbColon)) {
+        console.log("top border :",
+            isConnected(id, (id - 1)) &&
+            isConnected(id, (id + 1)) &&
+            isConnected(id, (id + nbColon))
+        );
         return (
             isConnected(id, (id - 1)) &&
             isConnected(id, (id + 1)) &&
@@ -380,6 +409,10 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isRightBorder(id, nbColon)) {
+        console.log("right border :",
+            isConnected(id, (id - nbColon)) &&
+            isConnected(id, (id + nbColon)) &&
+            isConnected(id, (id - 1)));
         return (
             isConnected(id, (id - nbColon)) &&
             isConnected(id, (id + nbColon)) &&
@@ -387,6 +420,10 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isBottomBorder(id, nbColon, nbRow)) {
+        console.log("bottom border :",
+            isConnected(id, (id - 1)) &&
+            isConnected(id, (id + 1)) &&
+            isConnected(id, (id - nbColon)));
         return (
             isConnected(id, (id - 1)) &&
             isConnected(id, (id + 1)) &&
@@ -394,6 +431,10 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isLeftBorder(id, nbColon)) {
+        console.log("left border :",
+            isConnected(id, (id - nbColon)) &&
+            isConnected(id, (id + 1)) &&
+            isConnected(id, (id + nbColon)));
         return (
             isConnected(id, (id - nbColon)) &&
             isConnected(id, (id + 1)) &&
@@ -403,7 +444,15 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
 }
 
 function internalTest(id, nbColon, nbRow, nbLinks) {
+    console.log("je suis dans internalTest le -ID- = (",id,")")
+
     if (nbLinks !== 4) return false;
+    console.log("est : ",
+        isConnected(id, (id - nbColon)) &&
+        isConnected(id, (id + 1)) &&
+        isConnected(id, (id + nbColon)) &&
+        isConnected(id, (id - 1))
+        );
     return (
         isConnected(id, (id - nbColon)) &&
         isConnected(id, (id + 1)) &&
