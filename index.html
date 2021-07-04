@@ -10,7 +10,7 @@
     <script src="./cy_package/cytoscape.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
     <script src="https://unpkg.com/cytoscape-dblclick/dist/index.js"></script>
-    <title>img</title>
+    <title> Puzzle Graph Game</title>
 </head>
 <body>
 <main>
@@ -25,8 +25,8 @@
                         <i class="fas fa-puzzle-piece"></i> Play a New Game
                     </button>
                 </div>
-                <button class="choices" onclick="openAboutList()"><i class="fas fa-info"></i>
-                    About
+                <button class="choices" onclick="openHelptList()"><i class="fas fa-question-circle"></i>
+                    Help
                 </button>
             </div>
 
@@ -37,11 +37,9 @@
                     <div class="list-ele">
                         <span class="close" onclick="closeGameList()">&times;</span>
                         <h2 class="choose-game">choose a Game </h2>
-
                         <div class="allGameBtn">
-
-                            <button class="gamebtn" onclick="open43()"> 4*3</button>
-
+                            <button class="gamebtn" onclick="open43()">4*3</button>
+                            <button class="gamebtn" onclick="open87()">8*7</button>
                         </div>
 
                     </div>
@@ -53,12 +51,10 @@
                     <div id="cy"></div>
 
                     <div class="saving" onmouseleave="">
-
                         <div id="saveList" class="list">
-
-                            <div class="list-ele">
+                            <div class="list-ele save-ele ">
                                 <span class="close" onclick="closeSaveList()">&times;</span>
-                                <h2 class="saving-titel"> SAVING </h2>
+                                <h2 class="list-titel"> SAVING </h2>
                                 <input type="text" id="FileName" name="fname" placeholder="file name"><br>
                                 <button class="save-img" onclick="saveAsImg(true)">.jpg</button>
                                 <button class="save-img" onclick="saveAsImg(false)">.png</button>
@@ -77,20 +73,14 @@
                 </div>
             </div>
 
-            <div id="aboutList" class="list">
-                <div class="list-ele">
-                    <span class="close" onclick="closeAboutList()">&times;</span>
-                    <h2 class="saving-titel"> About </h2>
-                    <h1>Interface web pour la manipulation d'images</h1>
-                    <h2>Introudction</h2>
-                    <p>This project is the one of my first internship in web developing, who I made it with LaBRI (<a
-                            href="https://www.labri.fr/en">Laboratoire Bordelais de Recherche en Informatique</a>),
-                        I use a graph library to manipulate the images </p>
-                    <h2>Tools</h2>
-                    <p>HTML5 , CSS , JavaScript and a fully featured graph theory library
-                        <a href="https://js.cytoscape.org/">Cytoscape.js</a>
-                    </p>
-
+            <div id="helptList" class="list">
+                <div class="list-ele help-ele">
+                    <span class="close" onclick="closeHelptList()">&times;</span>
+                    <h2 class="list-titel"> Help </h2><br><br>
+                    <h3>How to play Puzzle Graph Game ?</h3>
+                    <h4>1. Choose a Game From "Play New Game"</h4>
+                    <h4>2. Follow This Demonstration :</h4>
+                    <img src="myGif/example.gif">
                 </div>
 
             </div>

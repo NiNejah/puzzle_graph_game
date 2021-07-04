@@ -141,11 +141,12 @@
     background-color: rgba(69, 69, 69, 0.73);
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
     border-radius: 5px;
+    padding: 10px;
 }
 
-.saving-titel{
+.list-titel{
     color: #dddddd;
     float: left;
     padding: 10px 15px;
@@ -164,10 +165,11 @@
     color: red;
     cursor:pointer;
 }
+
 input{
     font-size: 20px;
     width: 90%;
-    padding: 10px 15px;
+    padding: 5px 15px;
     margin: 8px 0 15px;
     display: inline-block;
     border: 1px solid #ccc;
@@ -178,7 +180,7 @@ input{
     padding: 2px;
     margin-bottom: 10px;
     margin-right: 6px;
-    font-size: 20px;
+    font-size: 25px;
     color: rgba(83, 77, 77, 0.73);
     background-color: rgba(255, 255, 255, 0.71);
     border: none;
@@ -204,6 +206,13 @@ input{
     margin-bottom: 8px;
 }
 
-#About{
-    display: none;
+/* Help */
+.help-ele {
+    color: #dddddd;
+}
+.help-ele h3 {
+    text-align: center;
+}
+.help-ele img {
+    width: 100%;
 }

@@ -48,14 +48,14 @@ function closeGameList(){
     l.style.display ="none";
 }
 
-function openAboutList(){
+function openHelptList(){
     console.log("opening About list .. ");
-    let l = document.getElementById("aboutList");
+    let l = document.getElementById("helptList");
     l.style.display ="block";
 }
 
-function closeAboutList(){
+function closeHelptList(){
     console.log("closing about list .. ");
-    let l = document.getElementById("aboutList");
+    let l = document.getElementById("helptList");
     l.style.display ="none";
 }

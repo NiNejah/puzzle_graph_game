@@ -95,6 +95,7 @@ function addImgGame(url, eId) {
 }
 
 function open43() {
+    cy.remove(cy.nodes())
     let game_4_3 = [
         "4*3/1.png",
         "4*3/2.png",
@@ -119,6 +120,10 @@ function open43() {
     nbRows = 3 ;
 }
 
+function open87(){
+    cy.remove(cy.nodes())
+
+}
 
 ////// Link The Nodes \\\\\\
 let collectionToBeLinked = cy.collection();
@@ -369,7 +374,7 @@ function isConnected(id1, id2) {
 /// TESTS :
 
 function cornersTests(id, nbColon, nbRow, nbLinks) {
-    console.log("je suis dans cornersTests le -ID- = (",id,")")
+    // console.log("je suis dans cornersTests le -ID- = (",id,")")
     // test if the element has not enough, or to many links :
     if (nbLinks !== 2) return false;
     switch (id) {
@@ -394,14 +399,14 @@ function cornersTests(id, nbColon, nbRow, nbLinks) {
 }
 
 function borderTest(id, nbColon, nbRow, nbLinks) {
-    console.log("je suis dans borderTest le -ID- = (",id,")")
+    // console.log("je suis dans borderTest le -ID- = (",id,")")
     if (nbLinks !== 3) return false;
     if (isTobBorder(id, nbColon)) {
-        console.log("top border :",
-            isConnected(id, (id - 1)) &&
-            isConnected(id, (id + 1)) &&
-            isConnected(id, (id + nbColon))
-        );
+        // console.log("top border :",
+        //     isConnected(id, (id - 1)) &&
+        //     isConnected(id, (id + 1)) &&
+        //     isConnected(id, (id + nbColon))
+        // );
         return (
             isConnected(id, (id - 1)) &&
             isConnected(id, (id + 1)) &&
@@ -409,10 +414,10 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isRightBorder(id, nbColon)) {
-        console.log("right border :",
-            isConnected(id, (id - nbColon)) &&
-            isConnected(id, (id + nbColon)) &&
-            isConnected(id, (id - 1)));
+        // console.log("right border :",
+        //     isConnected(id, (id - nbColon)) &&
+        //     isConnected(id, (id + nbColon)) &&
+        //     isConnected(id, (id - 1)));
         return (
             isConnected(id, (id - nbColon)) &&
             isConnected(id, (id + nbColon)) &&
@@ -420,10 +425,10 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isBottomBorder(id, nbColon, nbRow)) {
-        console.log("bottom border :",
-            isConnected(id, (id - 1)) &&
-            isConnected(id, (id + 1)) &&
-            isConnected(id, (id - nbColon)));
+        // console.log("bottom border :",
+        //     isConnected(id, (id - 1)) &&
+        //     isConnected(id, (id + 1)) &&
+        //     isConnected(id, (id - nbColon)));
         return (
             isConnected(id, (id - 1)) &&
             isConnected(id, (id + 1)) &&
@@ -431,10 +436,10 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isLeftBorder(id, nbColon)) {
-        console.log("left border :",
-            isConnected(id, (id - nbColon)) &&
-            isConnected(id, (id + 1)) &&
-            isConnected(id, (id + nbColon)));
+        // console.log("left border :",
+        //     isConnected(id, (id - nbColon)) &&
+        //     isConnected(id, (id + 1)) &&
+        //     isConnected(id, (id + nbColon)));
         return (
             isConnected(id, (id - nbColon)) &&
             isConnected(id, (id + 1)) &&
@@ -444,15 +449,15 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
 }
 
 function internalTest(id, nbColon, nbRow, nbLinks) {
-    console.log("je suis dans internalTest le -ID- = (",id,")")
+    // console.log("je suis dans internalTest le -ID- = (",id,")")
 
     if (nbLinks !== 4) return false;
-    console.log("est : ",
-        isConnected(id, (id - nbColon)) &&
-        isConnected(id, (id + 1)) &&
-        isConnected(id, (id + nbColon)) &&
-        isConnected(id, (id - 1))
-        );
+    // console.log("est : ",
+    //     isConnected(id, (id - nbColon)) &&
+    //     isConnected(id, (id + 1)) &&
+    //     isConnected(id, (id + nbColon)) &&
+    //     isConnected(id, (id - 1))
+    //     );
     return (
         isConnected(id, (id - nbColon)) &&
         isConnected(id, (id + 1)) &&
