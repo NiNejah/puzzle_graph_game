@@ -23,7 +23,7 @@ let cy = cytoscape({
             'width': 80,
             'background-fit': 'cover',
             'background-color': '#ffffff',
-            'label': 'data(id)',
+            // 'label': 'data(id)',
             'shape': 'round-rectangle', //'barrel',
             // 'border-color': '#8ce8ff',
             // 'border-width': 3,
