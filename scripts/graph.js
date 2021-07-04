@@ -97,18 +97,18 @@ function addImgGame(url, eId) {
 function open43() {
     cy.remove(cy.nodes())
     let game_4_3 = [
-        "4*3/1.png",
-        "4*3/2.png",
-        "4*3/3.png",
-        "4*3/4.png",
-        "4*3/5.png",
-        "4*3/6.png",
-        "4*3/7.png",
-        "4*3/8.png",
-        "4*3/9.png",
-        "4*3/10.png",
-        "4*3/11.png",
-        "4*3/12.png"
+        "4_3/1.png",
+        "4_3/2.png",
+        "4_3/3.png",
+        "4_3/4.png",
+        "4_3/5.png",
+        "4_3/6.png",
+        "4_3/7.png",
+        "4_3/8.png",
+        "4_3/9.png",
+        "4_3/10.png",
+        "4_3/11.png",
+        "4_3/12.png"
     ]
     closeGameList();
     for (let i = 0; i < game_4_3.length; i++) {
@@ -120,9 +120,79 @@ function open43() {
     nbRows = 3 ;
 }
 
+
+
+
+
+
 function open87(){
     cy.remove(cy.nodes())
-
+    let game_8_7 = [
+        "8_7/1.png",
+        "8_7/2.png",
+        "8_7/3.png",
+        "8_7/4.png",
+        "8_7/5.png",
+        "8_7/6.png",
+        "8_7/7.png",
+        "8_7/8.png",
+        "8_7/9.png",
+        "8_7/10.png",
+        "8_7/11.png",
+        "8_7/12.png",
+        "8_7/13.png",
+        "8_7/14.png",
+        "8_7/15.png",
+        "8_7/16.png",
+        "8_7/17.png",
+        "8_7/18.png",
+        "8_7/19.png",
+        "8_7/20.png",
+        "8_7/21.png",
+        "8_7/22.png",
+        "8_7/23.png",
+        "8_7/24.png",
+        "8_7/25.png",
+        "8_7/26.png",
+        "8_7/27.png",
+        "8_7/28.png",
+        "8_7/29.png",
+        "8_7/30.png",
+        "8_7/31.png",
+        "8_7/32.png",
+        "8_7/33.png",
+        "8_7/34.png",
+        "8_7/35.png",
+        "8_7/36.png",
+        "8_7/37.png",
+        "8_7/38.png",
+        "8_7/39.png",
+        "8_7/40.png",
+        "8_7/41.png",
+        "8_7/42.png",
+        "8_7/43.png",
+        "8_7/44.png",
+        "8_7/45.png",
+        "8_7/46.png",
+        "8_7/47.png",
+        "8_7/48.png",
+        "8_7/49.png",
+        "8_7/50.png",
+        "8_7/51.png",
+        "8_7/52.png",
+        "8_7/53.png",
+        "8_7/54.png",
+        "8_7/55.png",
+        "8_7/56.png"
+        ]
+    closeGameList();
+    for (let i = 0; i < game_8_7.length; i++) {
+        let url = 'url(./jigs/' + game_8_7[i] + ')';
+        addImgGame(url, i + 1);
+    }
+    layoutRun(cy.nodes())
+    nbColons = 8 ;
+    nbRows = 7 ;
 }
 
 ////// Link The Nodes \\\\\\
