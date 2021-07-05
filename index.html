@@ -21,11 +21,11 @@
 
             <div class="menu">
                 <div class="choices" id="ch-download">
-                    <button id="filebtn" onclick="openGameList()">
+                    <button id="filebtn" onclick="openList('gameList')">
                         <i class="fas fa-puzzle-piece"></i> Play a New Game
                     </button>
                 </div>
-                <button class="choices" onclick="openHelptList()"><i class="fas fa-question-circle"></i>
+                <button class="choices" onclick="openList('helpList')"><i class="fas fa-question-circle"></i>
                     Help
                 </button>
             </div>
@@ -35,7 +35,7 @@
                 <!--                TO choose a game -->
                 <div id="gameList" class="list">
                     <div class="list-ele">
-                        <span class="close" onclick="closeGameList()">&times;</span>
+                        <span class="close" onclick="closeList('gameList')">&times;</span>
                         <h2 class="choose-game">choose a Game </h2>
                         <div class="allGameBtn">
                             <button class="gamebtn" onclick="open43()">4*3</button>
@@ -53,7 +53,7 @@
                     <div class="saving" onmouseleave="">
                         <div id="saveList" class="list">
                             <div class="list-ele save-ele ">
-                                <span class="close" onclick="closeSaveList()">&times;</span>
+                                <span class="close" onclick="closeList('saveList')">&times;</span>
                                 <h2 class="list-titel"> SAVING </h2>
                                 <input type="text" id="FileName" name="fname" placeholder="file name"><br>
                                 <button class="save-img" onclick="saveAsImg(true)">.jpg</button>
@@ -64,26 +64,36 @@
                             </div>
                         </div>
 
-                        <button class="open-save" onclick="openSaveList()" title="saving"><i class="fas fa-save"></i>
+                        <button class="open-save" onclick="openList('saveList')" title="saving">
+                            <i class="fas fa-save"></i>
                         </button>
-
                     </div>
-
                     <!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
                 </div>
-            </div>
 
-            <div id="helptList" class="list">
-                <div class="list-ele help-ele">
-                    <span class="close" onclick="closeHelptList()">&times;</span>
-                    <h2 class="list-titel"> Help </h2><br><br>
-                    <h3>How to play Puzzle Graph Game ?</h3>
-                    <h4>1. Choose a Game From "Play New Game"</h4>
-                    <h4>2. Follow This Demonstration :</h4>
-                    <img src="myGif/example.gif">
+                <div id="helpList" class="list">
+                    <div class="list-ele help-ele">
+                        <span class="close" onclick="closeList('helpList')">&times;</span>
+                        <h2 class="list-titel"> Help </h2><br><br>
+                        <h3>How to play Puzzle Graph Game ?</h3>
+                        <h4>1. Choose a Game From "Play New Game"</h4>
+                        <h4>2. Follow This Demonstration :</h4>
+                        <img src="myGif/example.gif">
+                    </div>
                 </div>
 
+                <div id="winingList" class="list">
+                    <div class="list-ele win-ele">
+                        <!--                        <span class="close" onclick="closeList('winingList')">&times;</span>-->
+                        <h2 class="list-titel"> Congratulation You Win !! another game ?</h2><br>
+                        <div class="centr-ele">
+                            <button class="yesbtn" onclick="closeList('winingList') ; open87()">Yes</button>
+                            <button class="No_Thanksbtn" onclick="closeList('winingList'); ">No, Thanks</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
 
         </div>
 

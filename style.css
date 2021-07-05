@@ -176,7 +176,7 @@ input{
     box-sizing: border-box;
 }
 
-.save-ele button{
+.save-ele button {
     padding: 2px;
     margin-bottom: 10px;
     margin-right: 6px;
@@ -215,4 +215,35 @@ input{
 }
 .help-ele img {
     width: 100%;
+}
+
+.win-ele .centr-ele {
+    text-align: center;
+}
+.win-ele button {
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-right: 6px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.73);
+    /*background-color: rgba(255, 255, 255, 0.71);*/
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.win-ele .yesbtn{
+    background-color: #097f7f;
+}
+
+.win-ele .No_Thanksbtn{
+    background-color: #8b0630;
+}
+
+.win-ele .yesbtn:hover{
+    background-color: rgb(10, 165, 165);
+}
+
+.win-ele .No_Thanksbtn:hover{
+    background-color: #c10843;
 }
