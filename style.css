@@ -247,3 +247,7 @@ input{
 .win-ele .No_Thanksbtn:hover{
     background-color: #c10843;
 }
+
+#originalImg{
+    width: 100%;
+}

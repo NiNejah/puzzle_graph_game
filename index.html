@@ -28,6 +28,9 @@
                 <button class="choices" onclick="openList('helpList')"><i class="fas fa-question-circle"></i>
                     Help
                 </button>
+                <button class="choices" onclick="openList('previewList')"><i class="fas fa-image"></i>
+                    Preview
+                </button>
             </div>
 
 
@@ -79,6 +82,14 @@
                         <h4>1. Choose a Game From "Play New Game"</h4>
                         <h4>2. Follow This Demonstration :</h4>
                         <img src="myGif/example.gif">
+                    </div>
+                </div>
+
+                <div id="previewList" class="list">
+                    <div class="list-ele">
+                        <span class="close" onclick="closeList('previewList')">&times;</span>
+                        <h2 class="list-titel"> original image </h2><br><br>
+                        <img id="originalImg" >
                     </div>
                 </div>
 

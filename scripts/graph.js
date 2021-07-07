@@ -1,5 +1,5 @@
-let nbColons =null ;
-let nbRows = null ;
+let nbColons = null;
+let nbRows = null;
 
 // Init :
 let cy = cytoscape({
@@ -41,13 +41,22 @@ let cy = cytoscape({
         })
         .selector('.to-be-linked')
         .css({
-            "color": "red"
-            // 'border-color': '#ff0000',
+            // 'background-color': '#ff003c',
+            // 'border-color': '#0e617b',
+            // 'border-width': 3,
         })
         .selector('.normal')
         .css({
-            "color": "#ffffff"
+            "color": "#c6073b"
+        })
+        .selector('.goodLink')
+        .css({
+            'width': 4,
+            'target-arrow-shape': 'triangle',
+            'line-color': '#07c663',
+            'target-arrow-color': '#05b45a'
         }),
+
 
 
     // style: fetch('cy-style.json').then(function(res){
@@ -116,11 +125,12 @@ function open43() {
         addImgGame(url, i + 1);
     }
     layoutRun(cy.nodes())
-    nbColons = 4 ;
-    nbRows = 3 ;
+    nbColons = 4;
+    nbRows = 3;
+    addOriginImage('./jigs/4_3/orig.jpg')
 }
-
-function open87(){
+open43()
+function open87() {
     cy.remove(cy.nodes())
     let game_8_7 = [
         "8_7/1.png", "8_7/2.png", "8_7/3.png", "8_7/4.png", "8_7/5.png", "8_7/6.png", "8_7/7.png", "8_7/8.png", "8_7/9.png", "8_7/10.png",
@@ -129,15 +139,16 @@ function open87(){
         "8_7/31.png", "8_7/32.png", "8_7/33.png", "8_7/34.png", "8_7/35.png", "8_7/36.png", "8_7/37.png", "8_7/38.png", "8_7/39.png", "8_7/40.png",
         "8_7/41.png", "8_7/42.png", "8_7/43.png", "8_7/44.png", "8_7/45.png", "8_7/46.png", "8_7/47.png", "8_7/48.png", "8_7/49.png", "8_7/50.png",
         "8_7/51.png", "8_7/52.png", "8_7/53.png", "8_7/54.png", "8_7/55.png", "8_7/56.png"
-        ]
+    ]
     closeList('gameList');
     for (let i = 0; i < game_8_7.length; i++) {
         let url = 'url(./jigs/' + game_8_7[i] + ')';
         addImgGame(url, i + 1);
     }
     layoutRun(cy.nodes())
-    nbColons = 8 ;
-    nbRows = 7 ;
+    nbColons = 8;
+    nbRows = 7;
+    addOriginImage('./jigs/8_7/orig.jpg')
 }
 
 ////// Link The Nodes \\\\\\
@@ -189,9 +200,10 @@ let addLink = ((evt) => {
             resetAllClassName();
         }
     }
-    if (gameOver(nbColons,nbRows)) {
+    if (gameOver(nbColons, nbRows)) {
         openList('winingList');
-    };
+    }
+    ;
 });
 
 
@@ -315,18 +327,27 @@ function hasGoodLink(id, nbColon, nbRow) {
 }
 
 function gameOver(nbColon, nbRow) {
-    console.log("nbR ",nbRow,"nbC ",nbColon);
-    if (nbColon === null || nbRow === null) return false ;
+    console.log("nbR ", nbRow, "nbC ", nbColon);
+    if (nbColon === null || nbRow === null) return false;
     console.log("je suis dans game is over ");
 
     let gameOver = true;
     cy.nodes().forEach((e) => {
-        if (!hasGoodLink(parseInt(getId(e[0])), nbColon, nbRow)) gameOver = false;
+        let idNb = parseInt(getId(e[0]))
+        if (!hasGoodLink(idNb, nbColon, nbRow)) gameOver = false;
+        else colorationOfGoodLink(idNb, nbColon, nbRow)
+
     });
     if (gameOver) console.log("c'est fini il est Ganger !!!!!!!!!!!!!!!!! ");
-    return gameOver ;
+    return gameOver;
 }
 
+function colorationOfGoodLink(id, nbColon, nbRow){
+    let myE = cy.$('#' + String(id));
+    let myEdges = myE.connectedEdges();
+    console.log("in coloration :",myEdges);
+    myEdges.addClass('goodLink')
+}
 
 //*********************************** PUZZLE.js ***********************************\\
 
@@ -336,7 +357,7 @@ function gameOver(nbColon, nbRow) {
 
 function isCorner(id, nbColon, nbRow) {
     if (id < 1 || id > nbColon * nbRow) console.log("invalid id arg in isCorner function !");
-    return id === 1 || id === nbColon || id === ( nbColon * (nbRow - 1)) + 1 || id === (nbRow * nbColon);
+    return id === 1 || id === nbColon || id === (nbColon * (nbRow - 1)) + 1 || id === (nbRow * nbColon);
 }
 
 function isLeftBorder(id, nbColon) {
@@ -361,10 +382,10 @@ function isBottomBorder(id, nbColon, nbRow) {
 
 function isBorder(id, nbColon, nbRow) {
     if (id < 1 || id > nbColon * nbRow) console.log("invalid id arg in isBorder function !");
-        // console.log("border left: ",isLeftBorder(id, nbColon))
-        // console.log("border right : ",isRightBorder(id, nbColon))
-        // console.log("border top: ",isTobBorder(id, nbColon))
-        // console.log("border bottom : ",isBottomBorder(id, nbColon, nbRow))
+    // console.log("border left: ",isLeftBorder(id, nbColon))
+    // console.log("border right : ",isRightBorder(id, nbColon))
+    // console.log("border top: ",isTobBorder(id, nbColon))
+    // console.log("border bottom : ",isBottomBorder(id, nbColon, nbRow))
     return (
         isLeftBorder(id, nbColon) ||
         isRightBorder(id, nbColon) ||
@@ -393,16 +414,16 @@ function cornersTests(id, nbColon, nbRow, nbLinks) {
     if (nbLinks !== 2) return false;
     switch (id) {
         case 1:
-            console.log("c'est conecter ? ", isConnected(id, 2) && isConnected(id, (nbColon + 1)) )
+            console.log("c'est conecter ? ", isConnected(id, 2) && isConnected(id, (nbColon + 1)))
             return isConnected(id, 2) && isConnected(id, (nbColon + 1));
         case nbColon:
-            console.log("c'est conecter ? ",isConnected(id, (id - 1)) && isConnected(id, (id + nbColon)))
+            console.log("c'est conecter ? ", isConnected(id, (id - 1)) && isConnected(id, (id + nbColon)))
             return isConnected(id, (id - 1)) && isConnected(id, (id + nbColon));
         case (nbColon * (nbRow - 1)) + 1:
             console.log("c'est conecter ? ", isConnected(id, (id - nbColon)) && isConnected(id, (id + 1)))
             return isConnected(id, (id - nbColon)) && isConnected(id, (id + 1));
         case nbRow * nbColon:
-            console.log("c'est conecter ? ",isConnected(id, (id - nbColon)) && isConnected(id, (id - 1)))
+            console.log("c'est conecter ? ", isConnected(id, (id - nbColon)) && isConnected(id, (id - 1)))
             return isConnected(id, (id - nbColon)) && isConnected(id, (id - 1));
         default:
             console.log("switch finished with default in cornerTests fun ");
@@ -478,4 +499,9 @@ function internalTest(id, nbColon, nbRow, nbLinks) {
         isConnected(id, (id + nbColon)) &&
         isConnected(id, (id - 1))
     );
+}
+
+function addOriginImage(mysrc){
+    let prevImag = document.getElementById("originalImg");
+    prevImag.src = mysrc ;
 }

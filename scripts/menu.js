@@ -8,3 +8,4 @@ function closeList(listId){
     console.log("closing ",listId);
     document.getElementById(listId).style.display = "none";
 }
+
