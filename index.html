@@ -16,12 +16,29 @@
 <main>
 
     <div class="all">
+        <div id="mySidebar" class="dashboard">
+
+            <div class="board-tools" id="btools">
+                <div class="nav-title">
+                <h3 class="choose-game">Choose a Game <span><a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close"><i
+                        class="fas fa-times-circle"></i></a></span> </h3>
+
+                </div>
+
+                <div class="allGameBtn">
+                    <button class="gamebtn" onclick="open43()">4*3</button>
+                    <button class="gamebtn" onclick="open87()">8*7</button>
+                </div>
+
+            </div>
+
+        </div>
 
         <div id="main" class="menu-body">
 
             <div class="menu">
                 <div class="choices" id="ch-download">
-                    <button id="filebtn" onclick="openList('gameList')">
+                    <button id="filebtn" onclick="openNav()">
                         <i class="fas fa-puzzle-piece"></i> Play a New Game
                     </button>
                 </div>
@@ -33,21 +50,7 @@
                 </button>
             </div>
 
-
             <div class="content">
-                <!--                TO choose a game -->
-                <div id="gameList" class="list">
-                    <div class="list-ele">
-                        <span class="close" onclick="closeList('gameList')">&times;</span>
-                        <h2 class="choose-game">choose a Game </h2>
-                        <div class="allGameBtn">
-                            <button class="gamebtn" onclick="open43()">4*3</button>
-                            <button class="gamebtn" onclick="open87()">8*7</button>
-                        </div>
-
-                    </div>
-                </div>
-
                 <!--                choices-content-->
                 <div id="Workshop" class="choices-content active">
 

@@ -35,6 +35,57 @@
     border-top:none ;
 }
 
+/********************************* sidebar *********************************/
+
+.dashboard {
+    height: 100%; /* 100% Full-height */
+    width: 250px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 10px; /* Place content 20px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+.dashboard a{
+    font-size: 20px;
+    margin-left: 20px;
+    color: #dddddd;
+    cursor: pointer;
+}
+
+.nav-title{
+    text-justify: distribute-all-lines;
+}
+
+h3 .closebtn{
+    margin-left: 50px;
+    font-size: 18px;
+}
+h3 .closebtn:hover{
+    color: #ff003b;
+}
+
+
+/*choose a Game*/
+.choose-game {
+    padding: 5px 15px;
+    color: #dddddd;
+}
+.allGameBtn {
+    text-align: center;
+}
+.gamebtn{
+    font-size: 16px;
+    padding: 2px;
+    width: 90%;
+    margin-bottom: 8px;
+}
+
+
 #main {
     transition: margin-left .5s; /* If you want a transition effect */
     padding: 20px;
@@ -191,20 +242,6 @@ input{
     background-color: rgba(255, 255, 255, 0.92);
 }
 
-/*choose a Game*/
-.choose-game {
-    padding: 5px 15px;
-    color: #dddddd;
-}
-.allGameBtn {
-    text-align: center;
-}
-.gamebtn{
-    font-size: 16px;
-    padding: 2px;
-    width: 90%;
-    margin-bottom: 8px;
-}
 
 /* Help */
 .help-ele {

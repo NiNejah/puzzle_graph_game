@@ -129,7 +129,7 @@ function open43() {
     nbRows = 3;
     addOriginImage('./jigs/4_3/orig.jpg')
 }
-open43()
+// open43()
 function open87() {
     cy.remove(cy.nodes())
     let game_8_7 = [
