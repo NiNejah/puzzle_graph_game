@@ -502,6 +502,7 @@ function internalTest(id, nbColon, nbRow, nbLinks) {
 }
 
 function addOriginImage(mysrc){
+    document.getElementById('prev-info').innerHTML ="Original Image"
     let prevImag = document.getElementById("originalImg");
     prevImag.src = mysrc ;
 }

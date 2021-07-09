@@ -20,11 +20,12 @@
 
                 <div class="tools-title">
                     <div class="column"> Tools </div>
-                    <div  class="column"> <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close">
-                                       <i class="fas fa-times-circle"></i></a>
+                    <div  class="column">
+                        <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close">
+                                       <i class="fas fa-times-circle"></i>
+                        </a>
                     </div>
-                        <!--                <h3 class="choose-game"> Tools <span><a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close">-->
-<!--                    <i class="fas fa-times-circle"></i></a></span></h3>-->
+
                 </div>
 
                 <div class="tools">
@@ -32,15 +33,15 @@
                     <div class="allGameBtn">
                         <div class="game-row">
                             <div class="column">
-                                <div class="container">
-                                    <img onclick="open43()" class="gamebtn" src="./jigs/4_3/orig.jpg">
+                                <div onclick="open43()" class="container">
+                                    <img  class="gamebtn" src="./jigs/4_3/orig.jpg">
                                     <div class="description">4 x 3</div>
                                 </div>
 <!--                                <button class="gamebtn" onclick="open43()">4*3</button>-->
                             </div>
                             <div class="column">
-                                <div class="container">
-                                    <img onclick="open87()" class="gamebtn" src="./jigs/8_7/orig.jpg">
+                                <div  onclick="open87()"  class="container">
+                                    <img class="gamebtn" src="./jigs/8_7/orig.jpg">
                                     <div class="description">8 x 7</div>
                                 </div>
                             </div>
@@ -90,7 +91,7 @@
                         <span class="close" onclick="closeList('helpList')">&times;</span>
                         <h2 class="list-titel"> Help </h2><br><br>
                         <h3>How to play Puzzle Graph Game ?</h3>
-                        <h4>1. Choose a Game From "Play New Game"</h4>
+                        <h4>1. Choose a Game From "Tools" -> "New Game" </h4>
                         <h4>2. Follow This Demonstration :</h4>
                         <img src="myGif/example.gif">
                     </div>
@@ -99,7 +100,7 @@
                 <div id="previewList" class="list">
                     <div class="list-ele">
                         <span class="close" onclick="closeList('previewList')">&times;</span>
-                        <h2 class="list-titel"> original image </h2><br><br>
+                        <h2 class="list-titel" id="prev-info"> There is no image to display please go for "Help" for more information </h2><br><br>
                         <img id="originalImg" >
                     </div>
                 </div>
