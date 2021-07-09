@@ -119,7 +119,7 @@ function open43() {
         "4_3/11.png",
         "4_3/12.png"
     ]
-    closeList('gameList');
+    closeNav();
     for (let i = 0; i < game_4_3.length; i++) {
         let url = 'url(./jigs/' + game_4_3[i] + ')';
         addImgGame(url, i + 1);
@@ -140,7 +140,7 @@ function open87() {
         "8_7/41.png", "8_7/42.png", "8_7/43.png", "8_7/44.png", "8_7/45.png", "8_7/46.png", "8_7/47.png", "8_7/48.png", "8_7/49.png", "8_7/50.png",
         "8_7/51.png", "8_7/52.png", "8_7/53.png", "8_7/54.png", "8_7/55.png", "8_7/56.png"
     ]
-    closeList('gameList');
+    closeNav();
     for (let i = 0; i < game_8_7.length; i++) {
         let url = 'url(./jigs/' + game_8_7[i] + ')';
         addImgGame(url, i + 1);

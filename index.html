@@ -18,19 +18,47 @@
     <div class="all">
         <div id="mySidebar" class="dashboard">
 
-            <div class="board-tools" id="btools">
-                <div class="nav-title">
-                <h3 class="choose-game">Choose a Game <span><a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close"><i
-                        class="fas fa-times-circle"></i></a></span> </h3>
+                <div class="tools-title">
+                    <div class="column"> Tools </div>
+                    <div  class="column"> <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close">
+                                       <i class="fas fa-times-circle"></i></a>
+                    </div>
+                        <!--                <h3 class="choose-game"> Tools <span><a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close">-->
+<!--                    <i class="fas fa-times-circle"></i></a></span></h3>-->
+                </div>
+
+                <div class="tools">
+                    <h3 class="tool" > <i class="fas fa-puzzle-piece"></i>  New Game</h3>
+                    <div class="allGameBtn">
+                        <div class="game-row">
+                            <div class="column">
+                                <div class="container">
+                                    <img onclick="open43()" class="gamebtn" src="./jigs/4_3/orig.jpg">
+                                    <div class="description">4 x 3</div>
+                                </div>
+<!--                                <button class="gamebtn" onclick="open43()">4*3</button>-->
+                            </div>
+                            <div class="column">
+                                <div class="container">
+                                    <img onclick="open87()" class="gamebtn" src="./jigs/8_7/orig.jpg">
+                                    <div class="description">8 x 7</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr>
+
+                    <h3 class="tool">  <i class="fas fa-save"></i> Saving</h3>
+                    <input type="text" id="FileName" name="fname" placeholder="File Name"><br>
+                    <button class="save-btn" onclick="saveAsImg(true)">.jpg</button>
+                    <button class="save-btn" onclick="saveAsImg(false)">.png</button>
+                    <!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
+                    <button class="save-btn" onclick="saveAsJson()">.JSON</button>
 
                 </div>
 
-                <div class="allGameBtn">
-                    <button class="gamebtn" onclick="open43()">4*3</button>
-                    <button class="gamebtn" onclick="open87()">8*7</button>
-                </div>
-
-            </div>
+<!--                content  -->
 
         </div>
 
@@ -39,7 +67,7 @@
             <div class="menu">
                 <div class="choices" id="ch-download">
                     <button id="filebtn" onclick="openNav()">
-                        <i class="fas fa-puzzle-piece"></i> Play a New Game
+                        <i class="fas fa-tools"></i> Tools
                     </button>
                 </div>
                 <button class="choices" onclick="openList('helpList')"><i class="fas fa-question-circle"></i>
@@ -53,27 +81,7 @@
             <div class="content">
                 <!--                choices-content-->
                 <div id="Workshop" class="choices-content active">
-
                     <div id="cy"></div>
-
-                    <div class="saving" onmouseleave="">
-                        <div id="saveList" class="list">
-                            <div class="list-ele save-ele ">
-                                <span class="close" onclick="closeList('saveList')">&times;</span>
-                                <h2 class="list-titel"> SAVING </h2>
-                                <input type="text" id="FileName" name="fname" placeholder="file name"><br>
-                                <button class="save-img" onclick="saveAsImg(true)">.jpg</button>
-                                <button class="save-img" onclick="saveAsImg(false)">.png</button>
-                                <!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
-                                <button class="save-json" onclick="saveAsJson()">.JSON</button>
-                                <br>
-                            </div>
-                        </div>
-
-                        <button class="open-save" onclick="openList('saveList')" title="saving">
-                            <i class="fas fa-save"></i>
-                        </button>
-                    </div>
                     <!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
                 </div>
 
