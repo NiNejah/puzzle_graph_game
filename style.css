@@ -154,12 +154,6 @@ input{
 }
 
 
-@media screen and (max-width: 700px) {
-    .menu button {
-        width: 100%;
-    }
-}
-
 /*@media screen and (max-width: 600px) {*/
 /*    .dashboard {*/
 /*        width: 100px;*/
@@ -302,4 +296,13 @@ input{
 
 #originalImg{
     width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+    .menu button {
+        width: 100%;
+    }
+    .list-ele{
+        width: 100%;
+    }
 }
