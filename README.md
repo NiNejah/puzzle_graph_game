@@ -11,4 +11,4 @@ images
 HTML5 , CSS , JavaScript and a fully featured graph theory library [Cytoscape.js](https://js.cytoscape.org/)
 
 
-#  switch  to puzzel_game to play the game 
+#  switch  to puzzle_game to play the game 
