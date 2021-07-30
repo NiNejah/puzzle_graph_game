@@ -28,12 +28,11 @@
 }
 
 .choices-content {
-    /*display: none;*/
+    display: block;
     position: relative;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top:none ;
-    display: none;
 }
 
 /********************************* sidebar *********************************/
@@ -51,77 +50,103 @@
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
 }
 
-.dashboard a{
-    font-size: 20px;
-    margin-left: 20px;
+
+ /*TOOLS : */
+
+.tools{
+    text-align: center;
+}
+.tool{
     color: #dddddd;
-    cursor: pointer;
 }
+hr{
+    width: 80%;
+}
+/*choose a Game*/
 
-/* ********** Dashboard Tools ********** */
-.board-tools{
-    overflow: hidden;
-    position: fixed;
-    display: none;
-    width: 200px;
-    background-color: rgba(59, 56, 56, 0.73);
-    padding: 5px;
-    margin: 10px;
-    border-radius: 20px;
-    transition: 0.7s;
-    color: #818181;
+.allGameBtn {
+    text-align: center;
 }
-
-.dashboard .addbtn:hover{
-  color: #24c19a;
+.tools-title {
+    margin-top: 20px;
+    color: #ffffff;
+    font-size: 25px;
 }
-.dashboard .selectAllbtn:hover{
-    color: #e2bc29;
+.closebtn{
+    color: #ffffff;
 }
-.dashboard .deselectAllbtn:hover{
-    color: #99c718;
-}
-.dashboard .closebtn:hover{
+.closebtn:hover{
     color: #ff003b;
 }
 
-.no-img-info{
-    color: rgba(198, 198, 198, 0.86);
-    font-size: 16px;
-    padding: 2px;
-    margin: 2px;
-    font-family: Monospace;
+.game-row , .tools-title{
     text-align: center;
-}
-
-/* IMG */
-.img-row {
     display: flex;
     flex-wrap: wrap;
     padding: 2px;
-    padding-top: 50px;
 }
-.img-row .column {
-    flex: 20%;
+.game-row .column , .tools-title .column{
+    flex: 40%;
     padding: 2px;
     /*cursor: pointer;*/
 }
-
-.img-row .column .myImg {
-    width: 95%;
+.gamebtn{
     border: 2px solid #cccccc;
     cursor: pointer;
-}
-.img-row .column .selectedImg {
-    width: 98%;
-    box-shadow: 0 0 2px 1px #77ff00;
-    border: 2px solid #cccccc;
-    cursor: pointer;
+    width: 70%;
+    transition: .5s ease;
 }
 
-.img-row .column img:hover {
-    width: 98%;
-    /*opacity: 0.8;*/
+.container {
+    position: relative;
+    text-align: center;
+}
+
+/* to make a affecté when the maus come over a game image */
+.description {
+    cursor: pointer;
+    color: #dddddd;
+    font-size: 25px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: .5s ease;
+    transform: translate(-50%, -50%);
+}
+
+.container:hover .gamebtn {
+    opacity: 0.3;
+}
+.container:hover .description {
+    opacity: 1;
+}
+
+/*SAVING : */
+input{
+    font-size: 18px;
+    width: 80%;
+    padding: 3px 10px;
+    margin: 8px 0 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.save-btn {
+    padding: 2px;
+    margin-bottom: 10px;
+    margin-right: 6px;
+    font-size: 18px;
+    color: #343434;
+    background-color: rgba(255, 255, 255, 0.71);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.save-btn:hover{
+    background-color: #ffffff;
+    color: #111;
 }
 
 #main {
@@ -130,18 +155,7 @@
 }
 
 
-@media screen and (max-width: 700px) {
-    .dashboard .board-tools {
-        width: 50px;
-        text-align: center;
-        justify-items: left;
-    }
-    .menu button {
-        width: 100%;
-    }
-}
 /*@media screen and (max-width: 600px) {*/
-
 /*    .dashboard {*/
 /*        width: 100px;*/
 /*        padding-top: 15px;*/
@@ -191,28 +205,9 @@
 }
 
 
-/********* SAVING... ******/
+/********* LIST : ******/
 
-.saving{
-    text-align: center;
-}
-
-.open-save{
-    margin: 10px;
-    font-size: 20px;
-    color: #ffe4e4;
-    background-color: #0e7b4f;
-    border: none;
-    padding: 7px;
-    border-radius: 10%;
-    cursor: pointer;
-}
-
-.open-save:hover{
-    background-color: #1a925f;
-}
-
-.save-list{
+.list{
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -226,15 +221,16 @@
     /*padding-top: 20%;*/
 }
 
-.save-ele {
-    background-color: rgba(83, 77, 77, 0.73);
+.list-ele {
+    background-color: rgba(69, 69, 69, 0.73);
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 30%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
     border-radius: 5px;
+    padding: 10px;
 }
 
-.saving-titel{
+.list-titel{
     color: #dddddd;
     float: left;
     padding: 10px 15px;
@@ -253,27 +249,63 @@
     color: red;
     cursor:pointer;
 }
-input{
-    font-size: 20px;
-    width: 90%;
-    padding: 10px 15px;
-    margin: 8px 0 15px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+
+
+
+
+/* Help */
+.help-ele {
+    color: #dddddd;
+}
+.help-ele h3 {
+    text-align: center;
+}
+.help-ele img {
+    width: 100%;
 }
 
-.save-ele button{
-    padding: 2px;
+
+/* wining */
+.win-ele .centr-ele {
+    text-align: center;
+}
+.win-ele button {
+    padding: 5px;
     margin-bottom: 10px;
     margin-right: 6px;
     font-size: 20px;
-    color: rgba(83, 77, 77, 0.73);
-    background-color: rgba(255, 255, 255, 0.71);
+    color: rgba(255, 255, 255, 0.73);
+    /*background-color: rgba(255, 255, 255, 0.71);*/
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     cursor: pointer;
 }
-.save-ele button:hover{
-    background-color: rgba(255, 255, 255, 0.92);
+
+.win-ele .yesbtn{
+    background-color: #097f7f;
+}
+
+.win-ele .No_Thanksbtn{
+    background-color: #8b0630;
+}
+
+.win-ele .yesbtn:hover{
+    background-color: rgb(10, 165, 165);
+}
+
+.win-ele .No_Thanksbtn:hover{
+    background-color: #c10843;
+}
+
+#originalImg{
+    width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+    .menu button {
+        width: 100%;
+    }
+    .list-ele{
+        width: 100%;
+    }
 }

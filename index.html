@@ -10,126 +10,123 @@
     <script src="./cy_package/cytoscape.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise,fetch"></script>
     <script src="https://unpkg.com/cytoscape-dblclick/dist/index.js"></script>
-    <title>img</title>
+    <title> Puzzle Graph Game</title>
 </head>
 <body>
 <main>
+
     <div class="all">
-        <!-- image : -->
+
         <div id="mySidebar" class="dashboard">
 
-            <div class="board-tools" id="btools">
-                <a class="addbtn" onclick="addImag()" title="add to the workshop"><i class="fas fa-plus-circle"></i></a>
-                <a class="selectAllbtn" onclick="selectAll()" title="select all"><i class="fas fa-border-all"></i></a>
-                <a class="deselectAllbtn" onclick="deselectAll()" title="deselect all"><i
-                        class="fas fa-object-group"></i></a>
-                <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close"><i
-                        class="fas fa-times-circle"></i></a>
+            <div class="tools-title">
+                <div class="column"> Tools</div>
+                <div class="column">
+                    <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close">
+                        <i class="fas fa-times-circle"></i>
+                    </a>
+                </div>
+
             </div>
 
-            <div class="img-row" onclick="on_select()">
-                <div class="no-img-info" id="info">There's no image to display please upload a file by clicking on "open
-                    new file"
+            <div class="tools">
+                <h3 class="tool"><i class="fas fa-puzzle-piece"></i> New Game</h3>
+                <div class="allGameBtn">
+                    <div class="game-row">
+                        <div class="column">
+                            <div onclick="open43()" class="container">
+                                <img class="gamebtn" src="./jigs/4_3/orig.jpg">
+                                <div class="description">4 x 3</div>
+                            </div>
+                            <!--                                <button class="gamebtn" onclick="open43()">4*3</button>-->
+                        </div>
+                        <div class="column">
+                            <div onclick="open87()" class="container">
+                                <img class="gamebtn" src="./jigs/8_7/orig.jpg">
+                                <div class="description">8 x 7</div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="column">
-                    <!--                        FOR TESTING-->
-                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg" alt="my img">-->
-                    <!--                    <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/Lammasu.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/_154952_gwadL.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/16681688_1155216801242504_7327477296852189429_n.jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/23iwmde%20(1).jpg" class="myImg">-->
-                    <!--                    <img src="img_test1/Lammasu.jpg" class="myImg">-->
-                </div>
-                <div class="column">
-                    <!--                        <img src="img_test2/chat2.png" class="selectedImg">-->
-                    <!--                         FOR TESTING -->
-                    <!--                        <img src="img_test1/CarteIrak10.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">-->
-                    <!--                        <img src="img_test1/3294289.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/CarteIrak10.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Baghdad_map.svg.png" class="myImg">-->
-                    <!--                        <img src="img_test1/3294289.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/above-the-clouds-184962_960_720.jpg" class="myImg">-->
-                    <!--                        <img src="img_test1/Meshed_ali_usnavy_(PD).jpg" class="myImg">-->
-                </div>
+                <hr>
+                <!--Saving operation-->
+                <h3 class="tool"><i class="fas fa-save"></i> Saving</h3>
+                <input type="text" id="FileName" name="fname" placeholder="File Name"><br>
+                <button class="save-btn" onclick="saveAsImg(true)">.jpg</button>
+                <button class="save-btn" onclick="saveAsImg(false)">.png</button>
+                <!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
+                <button class="save-btn" onclick="saveAsJson()">.JSON</button>
+
             </div>
+
+            <!--                content  -->
 
         </div>
 
         <div id="main" class="menu-body">
 
             <div class="menu">
-                <div class="choices" id="ch-download">
-                    <label for="files">
-                        <input type="file" name="files" id="myfiles" style="display:none" webkitdirectory=""
-                               directory="">
-                        <button id="filebtn" onclick="document.getElementById('myfiles').click()"><i
-                                class="fas fa-download fa-2X"></i> Open new file
-                        </button>
-                    </label>
+                <div class="choices">
+                    <!--                    tooles wall be a side navigation-->
+                    <button id="filebtn" onclick="openNav()">
+                        <i class="fas fa-tools"></i> Tools
+                    </button>
                 </div>
-                <button class="choices" onclick="openNav()"><i class="fas fa-check"></i> Selected</button>
-                <button class="choices" onclick="openChoice(event,'Workshop')"><i class="fas fa-pencil-ruler"></i>
-                    Workshop
+                <button class="choices" onclick="openList('helpList')">
+                    <i class="fas fa-question-circle"></i> Help
                 </button>
-                <button class="choices" onclick="openChoice(event,'About')"><i class="fas fa-info"></i>
-                    About
+                <button class="choices" onclick="openList('previewList')">
+                    <i class="fas fa-image"></i> Preview
                 </button>
             </div>
-
 
             <div class="content">
                 <!--                choices-content-->
-                <div id="Workshop" class="choices-content">
-
+                <div id="Workshop" class="choices-content active">
                     <div id="cy"></div>
-
-                    <div class="saving" onmouseleave="">
-
-                        <div id="saveList" class="save-list" >
-
-                            <div class="save-ele">
-                                <span class="close" onclick="closeSaveList()">&times;</span>
-                                <h2 class="saving-titel"> SAVING </h2>
-                                <input type="text" id="FileName" name="fname" placeholder="file name"><br>
-                                <button class="save-img" onclick="saveAsImg(true)">.jpg </button>
-                                <button class="save-img" onclick="saveAsImg(false)">.png </button>
-                                <!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
-                                <button class="save-json" onclick="saveAsJson()">.JSON </button>
-                                <br>
-                            </div>
-                        </div>
-
-                        <button class="open-save" onclick="openSaveList()" title="saving"><i class="fas fa-save"></i></button>
-
-                    </div>
-
                     <!--                        <a href="https://medium.com/@huiwang339/html-canvas-animation-with-javascript-1956426287d3" target="_blank">info1</a>-->
                 </div>
+
+                <div id="helpList" class="list">
+                    <div class="list-ele help-ele">
+                        <span class="close" onclick="closeList('helpList')">&times;</span>
+                        <h2 class="list-titel"> Help </h2><br><br>
+                        <h3>How to play Puzzle Graph Game ?</h3>
+                        <h4>1. Choose a Game From "Tools" -> "New Game" </h4>
+                        <h4>2. Follow This Demonstration :</h4>
+                        <img src="myGif/example.gif">
+                    </div>
+                </div>
+
+                <div id="previewList" class="list">
+                    <div class="list-ele">
+                        <span class="close" onclick="closeList('previewList')">&times;</span>
+                        <!--                        wall be hidden with javaScript if there is a image to display -->
+                        <h2 class="list-titel" id="prev-info"> There is no image to display please go for "Help" for
+                            more information </h2><br><br>
+                        <img id="originalImg">
+                    </div>
+                </div>
+
+                <div id="winingList" class="list">
+                    <div class="list-ele win-ele">
+                        <!--                        <span class="close" onclick="closeList('winingList')">&times;</span>-->
+                        <h2 class="list-titel"> Congratulation You Win !! another game ?</h2><br>
+                        <div class="centr-ele">
+                            <button class="yesbtn" onclick="closeList('winingList') ; open87()">Yes</button>
+                            <button class="No_Thanksbtn" onclick="closeList('winingList'); ">No, Thanks</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="About" class="choices-content">
-                <h1>Interface web pour la manipulation d'images</h1>
-                <h2>Introudction</h2>
-                <p>This project is the one of my first internship in web developing, who I made it with LaBRI (<a
-                        href="https://www.labri.fr/en">Laboratoire Bordelais de Recherche en Informatique</a>),
-                    I use a graph library to manipulate the images </p>
-                <h2>Tools</h2>
-                <p>HTML5 , CSS , JavaScript and a fully featured graph theory library
-                    <a href="https://js.cytoscape.org/">Cytoscape.js</a>
-                </p>
-            </div>
+
+
         </div>
 
 
     </div>
 </main>
-<script src="scripts/file.js"></script>
 <script src="scripts/graph.js"></script>
 </body>
 </html>
