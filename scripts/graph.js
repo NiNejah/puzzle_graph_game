@@ -17,7 +17,7 @@ let cy = cytoscape({
             'background-fit': 'cover',
             'background-color': '#ffffff',
             // 'label': 'data(id)',
-            'shape': 'round-rectangle', //'barrel',
+            'shape': 'round-rectangle',
             // 'border-color': '#8ce8ff',
             // 'border-width': 3,
             // 'border-opacity': 0.5,
@@ -39,12 +39,6 @@ let cy = cytoscape({
             'line-color': '#07c663',
             'target-arrow-color': '#05b45a'
         }),
-
-
-
-    // style: fetch('cy-style.json').then(function(res){
-    //     return res.json();
-    // }),
 
     // pan: {x: 10, y: 10},
     wheelSensitivity: 0.3,
@@ -140,15 +134,12 @@ let collectionToBeLinked = cy.collection();
 let addLink = ((evt) => {
     let evtTarget = evt.target;
     if (evtTarget === cy) {
-        // console.log("click en vide ");
         collectionToBeLinked = cy.collection();
         resetAllClassName();
     } else {
         let evntTagGroup = getGroup(evtTarget[0]);
         if (isNodes(evntTagGroup)) {
-            // console.log("click sur node !");
             collectionToBeLinked = collectionToBeLinked.union(evtTarget);
-            // console.log("en 0","collectionToBeLinked , length",collectionToBeLinked,collectionToBeLinked.length);
             if  (collectionToBeLinked.length === 2 ) {
                     let from = getId(collectionToBeLinked[0]);
                     let to = getId(collectionToBeLinked[1]);
@@ -162,7 +153,6 @@ let addLink = ((evt) => {
                         console.log("already Linked !");
                     }
                     collectionToBeLinked = cy.collection();
-                    // console.log("en2","collectionToBeLinked , length",collectionToBeLinked,collectionToBeLinked.length);
                     resetAllClassName();
             }
             // EDG :
@@ -267,20 +257,6 @@ function saveTextAsFile(data) {
     downloadLink.innerHTML = "Download File";
     downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
     downloadLink.click();
-
-    //
-    // if (window.webkitURL != null) {
-    //     // Chrome allows the link to be clicked
-    //     // without actually adding it to the DOM.
-    //     downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-    // } else {
-    //     // Firefox requires the link to be added to the DOM
-    //     // before it can be clicked.
-    //     downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-    //     downloadLink.onclick = destroyClickedElement;
-    //     downloadLink.style.display = "none";
-    //     document.body.appendChild(downloadLink);
-    // }
 }
 
 
@@ -354,10 +330,6 @@ function isBottomBorder(id, nbColon, nbRow) {
 
 function isBorder(id, nbColon, nbRow) {
     if (id < 1 || id > nbColon * nbRow) console.log("invalid id arg in isBorder function !");
-    // console.log("border left: ",isLeftBorder(id, nbColon))
-    // console.log("border right : ",isRightBorder(id, nbColon))
-    // console.log("border top: ",isTobBorder(id, nbColon))
-    // console.log("border bottom : ",isBottomBorder(id, nbColon, nbRow))
     return (
         isLeftBorder(id, nbColon) ||
         isRightBorder(id, nbColon) ||
@@ -381,21 +353,16 @@ function isConnected(id1, id2) {
 /// TESTS :
 
 function cornersTests(id, nbColon, nbRow, nbLinks) {
-    // console.log("je suis dans cornersTests le -ID- = (",id,")")
     // test if the element has not enough, or to many links :
     if (nbLinks !== 2) return false;
     switch (id) {
         case 1:
-            console.log("c'est conecter ? ", isConnected(id, 2) && isConnected(id, (nbColon + 1)))
             return isConnected(id, 2) && isConnected(id, (nbColon + 1));
         case nbColon:
-            console.log("c'est conecter ? ", isConnected(id, (id - 1)) && isConnected(id, (id + nbColon)))
             return isConnected(id, (id - 1)) && isConnected(id, (id + nbColon));
         case (nbColon * (nbRow - 1)) + 1:
-            console.log("c'est conecter ? ", isConnected(id, (id - nbColon)) && isConnected(id, (id + 1)))
             return isConnected(id, (id - nbColon)) && isConnected(id, (id + 1));
         case nbRow * nbColon:
-            console.log("c'est conecter ? ", isConnected(id, (id - nbColon)) && isConnected(id, (id - 1)))
             return isConnected(id, (id - nbColon)) && isConnected(id, (id - 1));
         default:
             console.log("switch finished with default in cornerTests fun ");
@@ -406,14 +373,8 @@ function cornersTests(id, nbColon, nbRow, nbLinks) {
 }
 
 function borderTest(id, nbColon, nbRow, nbLinks) {
-    // console.log("je suis dans borderTest le -ID- = (",id,")")
     if (nbLinks !== 3) return false;
     if (isTobBorder(id, nbColon)) {
-        // console.log("top border :",
-        //     isConnected(id, (id - 1)) &&
-        //     isConnected(id, (id + 1)) &&
-        //     isConnected(id, (id + nbColon))
-        // );
         return (
             isConnected(id, (id - 1)) &&
             isConnected(id, (id + 1)) &&
@@ -421,10 +382,6 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isRightBorder(id, nbColon)) {
-        // console.log("right border :",
-        //     isConnected(id, (id - nbColon)) &&
-        //     isConnected(id, (id + nbColon)) &&
-        //     isConnected(id, (id - 1)));
         return (
             isConnected(id, (id - nbColon)) &&
             isConnected(id, (id + nbColon)) &&
@@ -432,10 +389,6 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isBottomBorder(id, nbColon, nbRow)) {
-        // console.log("bottom border :",
-        //     isConnected(id, (id - 1)) &&
-        //     isConnected(id, (id + 1)) &&
-        //     isConnected(id, (id - nbColon)));
         return (
             isConnected(id, (id - 1)) &&
             isConnected(id, (id + 1)) &&
@@ -443,10 +396,6 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
         );
     }
     if (isLeftBorder(id, nbColon)) {
-        // console.log("left border :",
-        //     isConnected(id, (id - nbColon)) &&
-        //     isConnected(id, (id + 1)) &&
-        //     isConnected(id, (id + nbColon)));
         return (
             isConnected(id, (id - nbColon)) &&
             isConnected(id, (id + 1)) &&
@@ -456,15 +405,7 @@ function borderTest(id, nbColon, nbRow, nbLinks) {
 }
 
 function internalTest(id, nbColon, nbRow, nbLinks) {
-    // console.log("je suis dans internalTest le -ID- = (",id,")")
-
     if (nbLinks !== 4) return false;
-    // console.log("est : ",
-    //     isConnected(id, (id - nbColon)) &&
-    //     isConnected(id, (id + 1)) &&
-    //     isConnected(id, (id + nbColon)) &&
-    //     isConnected(id, (id - 1))
-    //     );
     return (
         isConnected(id, (id - nbColon)) &&
         isConnected(id, (id + 1)) &&
