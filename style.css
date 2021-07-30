@@ -102,6 +102,7 @@ hr{
     text-align: center;
 }
 
+/* to make a affecté when the maus come over a game image */
 .description {
     cursor: pointer;
     color: #dddddd;
@@ -263,6 +264,8 @@ input{
     width: 100%;
 }
 
+
+/* wining */
 .win-ele .centr-ele {
     text-align: center;
 }

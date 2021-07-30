@@ -16,48 +16,49 @@
 <main>
 
     <div class="all">
+
         <div id="mySidebar" class="dashboard">
 
-                <div class="tools-title">
-                    <div class="column"> Tools </div>
-                    <div  class="column">
-                        <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close">
-                                       <i class="fas fa-times-circle"></i>
-                        </a>
-                    </div>
-
+            <div class="tools-title">
+                <div class="column"> Tools </div>
+                <div  class="column">
+                    <a class="closebtn" href="javascript:void(0)" onclick="closeNav()" title="close">
+                                   <i class="fas fa-times-circle"></i>
+                    </a>
                 </div>
 
-                <div class="tools">
-                    <h3 class="tool" > <i class="fas fa-puzzle-piece"></i>  New Game</h3>
-                    <div class="allGameBtn">
-                        <div class="game-row">
-                            <div class="column">
-                                <div onclick="open43()" class="container">
-                                    <img  class="gamebtn" src="./jigs/4_3/orig.jpg">
-                                    <div class="description">4 x 3</div>
-                                </div>
+            </div>
+
+            <div class="tools">
+                <h3 class="tool" > <i class="fas fa-puzzle-piece"></i>  New Game</h3>
+                <div class="allGameBtn">
+                    <div class="game-row">
+                        <div class="column">
+                            <div onclick="open43()" class="container">
+                                <img  class="gamebtn" src="./jigs/4_3/orig.jpg">
+                                <div class="description">4 x 3</div>
+                            </div>
 <!--                                <button class="gamebtn" onclick="open43()">4*3</button>-->
-                            </div>
-                            <div class="column">
-                                <div  onclick="open87()"  class="container">
-                                    <img class="gamebtn" src="./jigs/8_7/orig.jpg">
-                                    <div class="description">8 x 7</div>
-                                </div>
-                            </div>
-
                         </div>
+                        <div class="column">
+                            <div  onclick="open87()"  class="container">
+                                <img class="gamebtn" src="./jigs/8_7/orig.jpg">
+                                <div class="description">8 x 7</div>
+                            </div>
+                        </div>
+
                     </div>
-                    <hr>
-
-                    <h3 class="tool">  <i class="fas fa-save"></i> Saving</h3>
-                    <input type="text" id="FileName" name="fname" placeholder="File Name"><br>
-                    <button class="save-btn" onclick="saveAsImg(true)">.jpg</button>
-                    <button class="save-btn" onclick="saveAsImg(false)">.png</button>
-                    <!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
-                    <button class="save-btn" onclick="saveAsJson()">.JSON</button>
-
                 </div>
+                <hr>
+<!--Saving operation-->
+                <h3 class="tool">  <i class="fas fa-save"></i> Saving</h3>
+                <input type="text" id="FileName" name="fname" placeholder="File Name"><br>
+                <button class="save-btn" onclick="saveAsImg(true)">.jpg</button>
+                <button class="save-btn" onclick="saveAsImg(false)">.png</button>
+                <!--                        <a href="https://stackoverflow.com/questions/14011021/how-to-download-a-base64-encoded-image">save as img info</a>-->
+                <button class="save-btn" onclick="saveAsJson()">.JSON</button>
+
+            </div>
 
 <!--                content  -->
 
@@ -66,16 +67,17 @@
         <div id="main" class="menu-body">
 
             <div class="menu">
-                <div class="choices" id="ch-download">
+                <div class="choices" >
+<!--                    tooles wall be a side navigation-->
                     <button id="filebtn" onclick="openNav()">
                         <i class="fas fa-tools"></i> Tools
                     </button>
                 </div>
-                <button class="choices" onclick="openList('helpList')"><i class="fas fa-question-circle"></i>
-                    Help
+                <button class="choices" onclick="openList('helpList')">
+                    <i class="fas fa-question-circle"></i> Help
                 </button>
-                <button class="choices" onclick="openList('previewList')"><i class="fas fa-image"></i>
-                    Preview
+                <button class="choices" onclick="openList('previewList')">
+                    <i class="fas fa-image"></i> Preview
                 </button>
             </div>
 
@@ -100,6 +102,7 @@
                 <div id="previewList" class="list">
                     <div class="list-ele">
                         <span class="close" onclick="closeList('previewList')">&times;</span>
+<!--                        wall be hidden with javaScript if there is a image to display -->
                         <h2 class="list-titel" id="prev-info"> There is no image to display please go for "Help" for more information </h2><br><br>
                         <img id="originalImg" >
                     </div>
@@ -126,3 +129,22 @@
 <script src="scripts/graph.js"></script>
 </body>
 </html>
+
+
+<!--<div id="winingList" class="list">-->
+<!--    <div class="list-ele win-ele">-->
+<!--        <h2 class="list-titel">-->
+<!--            Congratulation You Win !! another game ?-->
+<!--        </h2><br>-->
+<!--        <div class="centr-ele">-->
+<!--            <button class="yesbtn"-->
+<!--                    onclick="closeList('winingList') ; open87()">-->
+<!--                Yes-->
+<!--            </button>-->
+<!--            <button class="No_Thanksbtn"-->
+<!--                    onclick="closeList('winingList')">-->
+<!--                No, Thanks-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

@@ -4,13 +4,6 @@ let nbRows = null;
 // Init :
 let cy = cytoscape({
     container: document.getElementById('cy'),// container to render in
-
-    // elements: [
-    //     {data: {id: 'a'}},
-    //     {data: {id: 'b'}},
-    //     {data: {id: 'c'}},
-    //     {data: {id: 'ab', source: 'a', target: 'b'}}
-    // ],
     layout: {
         name: 'grid',
         rows: 1
@@ -39,16 +32,6 @@ let cy = cytoscape({
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier'
         })
-        .selector('.to-be-linked')
-        .css({
-            // 'background-color': '#ff003c',
-            // 'border-color': '#0e617b',
-            // 'border-width': 3,
-        })
-        .selector('.normal')
-        .css({
-            "color": "#c6073b"
-        })
         .selector('.goodLink')
         .css({
             'width': 4,
@@ -70,7 +53,7 @@ let cy = cytoscape({
     maxZoom: 5,
 
 });
-cy.nodes().classes('normal')
+
 
 function layoutRun(eles) {
     let layout = eles.layout({
@@ -166,14 +149,7 @@ let addLink = ((evt) => {
             // console.log("click sur node !");
             collectionToBeLinked = collectionToBeLinked.union(evtTarget);
             // console.log("en 0","collectionToBeLinked , length",collectionToBeLinked,collectionToBeLinked.length);
-            switch (collectionToBeLinked.length) {
-                case 1 :
-                    let eId = getId(evtTarget[0]);
-                    console.log("id", eId)
-                    // to change the class from normal to to be linked
-                    changeTheClassName(cy.$id(eId), 'normal', 'to-be-linked');
-                    break;
-                case 2:
+            if  (collectionToBeLinked.length === 2 ) {
                     let from = getId(collectionToBeLinked[0]);
                     let to = getId(collectionToBeLinked[1]);
                     if (!isConnected(from, to)) {
@@ -188,9 +164,6 @@ let addLink = ((evt) => {
                     collectionToBeLinked = cy.collection();
                     // console.log("en2","collectionToBeLinked , length",collectionToBeLinked,collectionToBeLinked.length);
                     resetAllClassName();
-                    break;
-                default:
-                    break;
             }
             // EDG :
         } else {
@@ -203,7 +176,6 @@ let addLink = ((evt) => {
     if (gameOver(nbColons, nbRows)) {
         openList('winingList');
     }
-    ;
 });
 
 
